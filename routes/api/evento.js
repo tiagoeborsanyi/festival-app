@@ -40,9 +40,8 @@ router.get('/:id', async (req, res) => {
 // @route POST /api/evento
 // @desc Events create
 // @access Private
-router.post('/', async (req, res) => {
+router.post('/', passport.authenticate('jwt', { session: false }), async (req, res) => {
     const { name, phone, mobile, nameCompany, state, city, email, EventDate, description } = req.body;
-
     const event = new Evento({
         name, phone, mobile, nameCompany, state, city, email, EventDate, description, _user: req.user.id
     });

@@ -1,10 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import './Description.css';
 //https://ticketagora.com.br/e/festival-da-montanha-2019-28813
 
 const Descricao = (props) => {
-    const { id } = props.match.params;
     return (
         <div>
             <div className="row">
@@ -34,31 +34,31 @@ const Descricao = (props) => {
                     <div className="desc_info_text">
                         <p>
                             Entre trilhas, vales, montanhas e o belíssimo lago da barragem do Rio São Bento, 
-                            em Siderópolis, o Festival da Montanha chega a sua V edição reunindo diversas 
+                            em Siderópolis, o Festival da Montanha chega Link sua V edição reunindo diversas 
                             atividades que podem ser praticadas em ambientes de montanha.
                         </p>
                         <p>
-                            No sábado dia 9, a atividade de stand up será APENAS PARA COMPETIDORES, 
+                            No sábado dia 9, Link atividade de stand up será APENAS PARA COMPETIDORES, 
                             inscritos no evento. Se você é COMPETIDOR, gentileza entrar em contato via whats 
-                            (48) 9 9841-5372. Para demais participantes a inscrição deve ser feita neste site.
+                            (48) 9 9841-5372. Para demais participantes Link inscrição deve ser feita neste site.
                         </p>
                         <p>
-                            No sábado dia 9, a atividade de stand up será APENAS PARA COMPETIDORES, 
+                            No sábado dia 9, Link atividade de stand up será APENAS PARA COMPETIDORES, 
                             inscritos no evento. Se você é COMPETIDOR, gentileza entrar em contato via whats 
-                            (48) 9 9841-5372. Para demais participantes a inscrição deve ser feita neste site.
+                            (48) 9 9841-5372. Para demais participantes Link inscrição deve ser feita neste site.
                         </p>
                         <p>
-                            No sábado dia 9, a atividade de stand up será APENAS PARA COMPETIDORES, 
+                            No sábado dia 9, Link atividade de stand up será APENAS PARA COMPETIDORES, 
                             inscritos no evento. Se você é COMPETIDOR, gentileza entrar em contato via whats 
-                            (48) 9 9841-5372. Para demais participantes a inscrição deve ser feita neste site.
+                            (48) 9 9841-5372. Para demais participantes Link inscrição deve ser feita neste site.
                         </p>
                         <p>
                             Valor da inscrição R$ 85,00 para participar de todas atividades
                         </p>
                         <p>
-                            Quem for trazer sua própria prancha ou embarcação deve obrigatoriamente fazer a inscrição 
-                            normalmente e contatar a organização através do whats (48) 9 9841-5372 - não será permitida 
-                            a entrada na Barragem de pessoas sem inscrição prévia. Não haverá inscrição no local.
+                            Quem for trazer sua própria prancha ou embarcação deve obrigatoriamente fazer Link inscrição 
+                            normalmente e contatar Link organização através do whats (48) 9 9841-5372 - não será permitida 
+                            Link entrada na Barragem de pessoas sem inscrição prévia. Não haverá inscrição no local.
                         </p>
                     </div>
                 </div>
@@ -67,7 +67,7 @@ const Descricao = (props) => {
                         Inscrições até 06/11/19 18:00
                     </div>
                     <div className="desc_inscricao_button">
-                        <a className="waves-effect waves-light btn-large red lighten-1">INSCREVA_SE</a>
+                        <Link to="/" className="waves-effect waves-light btn-large red lighten-1">INSCREVA_SE</Link>
                     </div>
                     <div className="desc_organizacao">
                         <span className="desc_organizacao_title">
@@ -81,24 +81,24 @@ const Descricao = (props) => {
                         </span>
                     </div>
                     <div className="desc_fale_organizador">
-                        <a href="#">Fale com o organizador</a>
+                        <Link to="/">Fale com o organizador</Link>
                     </div>
                     <div className="desc_title_share">
                         <p>COMPARTILHE ESTE EVENTO</p>
-                        <img src={require('../../assets/icon_twitter.png')} />
-                        <img src={require('../../assets/icon_twitter.png')} />
-                        <img src={require('../../assets/icon_twitter.png')} />
-                        <img src={require('../../assets/icon_twitter.png')} />
+                        <img src={require('../../assets/icon_twitter.png')} alt="twitter" />
+                        <img src={require('../../assets/icon_twitter.png')} alt="twitter" />
+                        <img src={require('../../assets/icon_twitter.png')} alt="twitter" />
+                        <img src={require('../../assets/icon_twitter.png')} alt="twitter" />
                     </div>
                     <div className="desc_fez_pedido">
                         <p>JÁ FEZ SEU PEDIDO?</p>
                         <ul>
-                            <li><a href="#">2º via boleto</a></li>
-                            <li><a href="#">Protocolo de inscrição</a></li>
-                            <li><a href="#">Área do participante</a></li>
-                            <li><a href="#">Dúvidas sobre incrição</a></li>
-                            <li><a href="#">Fale conosco</a></li>
-                            <li><a href="#">Denunciar evento</a></li>
+                            <li><Link to="/">2º via boleto</Link></li>
+                            <li><Link to="/">Protocolo de inscrição</Link></li>
+                            <li><Link to="/">Área do participante</Link></li>
+                            <li><Link to="/">Dúvidas sobre incrição</Link></li>
+                            <li><Link to="/">Fale conosco</Link></li>
+                            <li><Link to="/">Denunciar evento</Link></li>
                         </ul>
                     </div>
                 </div>
@@ -107,10 +107,10 @@ const Descricao = (props) => {
                 <div className="col s12">
                     <div className="desc_share_evento_geral">
                         <p>COMPARTILHE ESTE EVENTO</p>
-                        <img src={require('../../assets/icon_twitter.png')} />
-                        <img src={require('../../assets/icon_twitter.png')} />
-                        <img src={require('../../assets/icon_twitter.png')} />
-                        <img src={require('../../assets/icon_twitter.png')} />
+                        <img src={require('../../assets/icon_twitter.png')} alt="twitter" />
+                        <img src={require('../../assets/icon_twitter.png')} alt="twitter" />
+                        <img src={require('../../assets/icon_twitter.png')} alt="twitter" />
+                        <img src={require('../../assets/icon_twitter.png')} alt="twitter" />
                     </div>
                 </div>
             </div>

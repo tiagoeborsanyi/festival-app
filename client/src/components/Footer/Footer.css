@@ -1,0 +1,16 @@
+/* FOOTER */
+.footer {
+    height: 200px;
+    width: 100%;
+    text-align: left;
+    margin-bottom: 0;
+}
+
+.footer p {
+    color: white;
+    font-weight: bold;
+}
+
+.footer ul li {
+    color: #e0e0e0;
+}

@@ -1,0 +1,7 @@
+.mainNav__item img {
+    max-height: 45px;
+    margin-top: -5px;
+    margin-left: 10px;
+    vertical-align: middle;
+    border: 0;
+}

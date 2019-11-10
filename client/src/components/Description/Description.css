@@ -1,0 +1,123 @@
+.logo-folder img {
+    max-height: 190px;
+    width: 100%;
+}
+
+.desc_title,
+.desc_subtitle {
+    text-align: left;
+    margin-left: 15px;
+}
+
+.desc_subtitle {
+    line-height: 2;
+    vertical-align: middle;
+    display: flex;
+    color: #a7a9ab;
+}
+
+.desc_icon {
+    margin-right: 6px;
+}
+
+.desc_info_title {
+    margin: 15px 0 8px 15px;
+    font-weight: bold;
+    text-align: left;
+    font-size: 1.2em;
+}
+
+.desc_indo_subtitle {
+    text-align: left;
+    margin-left: 15px;
+    margin-bottom: 8px;
+}
+
+.desc_info_text {
+    text-align: left;
+    margin-bottom: 6px;
+    margin-left: 15px;
+}
+
+.desc_inscricao_date {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.desc_inscricao_button {
+    text-align: left;
+    margin: 10px 0;
+}
+
+.desc_organizacao {
+    text-align: left;
+    margin-top: 30px;
+    margin-bottom: 8px;
+}
+
+.desc_organizacao_title {
+    font-weight: bold;
+}
+
+.desc_organizacao span {
+    display: block;
+    margin: 0;
+}
+
+.desc_fale_organizador {
+    text-align: left;
+    margin: 25px 0;
+}
+
+.desc_fale_organizador a {
+    color: orange;
+}
+
+.desc_fale_organizador a:hover {
+    font-weight: bold;
+}
+
+.desc_title_share {
+    text-align: left;
+    font-weight: bold;
+    font-size: 1.1em;
+    display: block;
+}
+
+.desc_title_share img {
+    width: 40px;
+    height: 40px;
+    margin: 0 9px 0 0;
+
+}
+
+.desc_fez_pedido {
+    text-align: left;
+    font-weight: bold;
+    font-size: 1.1em;
+    display: block;
+    margin-top: 40px;
+}
+
+.desc_fez_pedido ul li {
+    margin-top: 15px;
+}
+
+.desc_fez_pedido a {
+    color: orange;
+    font-size: 14px;
+}
+
+.desc_share_evento_geral {
+    text-align: center;
+    margin: 20px;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.desc_share_evento_geral img {
+    width: 50px;
+    height: 50px;
+    margin: 8px;
+}

@@ -15,7 +15,7 @@ const Toolbar = (props) => (
             </div>
             <ul className="right hide-on-med-and-down">
               <li><Link to="/add_festival"><span>Adicionar </span></Link></li>
-              <li><Link to="/">Login</Link></li>
+              <li><Link to="/login">Login</Link></li>
             </ul>
           </div>
         </nav>

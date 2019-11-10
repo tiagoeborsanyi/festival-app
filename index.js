@@ -5,6 +5,7 @@ const passport = require('passport');
 const http = require('http');
 
 const user = require('./routes/api/user');
+const evento = require('./routes/api/evento');
 
 const app = express();
 
@@ -29,6 +30,7 @@ require('./config/passport')(passport);
 
 // Use Routes
 app.use('/api/users', user);
+app.use('/api/evento', evento);
 
 if (process.env.NODE_ENV === 'production') {
     // Express will server up production assets

@@ -22,6 +22,10 @@ const UserSchema = new Schema({
     type: String,
     default: 'avatar.png'
   },
+  admin: {
+    type: Boolean,
+    default: false
+  },
   date: {
     type: Date,
     default: Date.now

@@ -10,6 +10,11 @@ class Auth extends Component {
         pass: ''
     }
 
+    change = e => {
+        const { name, value } = e.target;
+        this.setState({[name]: value})
+    }
+
     submitAuth = (e) => {
         e.preventDefault();
         const { email, pass } = this.state;
@@ -18,20 +23,9 @@ class Auth extends Component {
 
     render() {
         return (
-            <div className="row">
-                <div className="col s6">
-                    <form onSubmit={this.submitAuth}>
-                        <span>Email</span>
-                        <input placeholder="email" type="email" onChange={event => this.setState({email: event.target.value})} />
-                        <span>Senha</span>
-                        <input placeholder="senha" type="password" onChange={event => this.setState({pass: event.target.value})} />
-                        <button type="submit" className="light-blue btn-flat right white-text">
-                            Avançar
-                            <i className="material-icons right">done</i>
-                        </button>
-                    </form>
-                </div>
-            </div>
+            <Login
+                submit={this.submitAuth}
+                changed={this.change} />
         )
     }
 }

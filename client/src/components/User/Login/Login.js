@@ -21,7 +21,10 @@ const Login = ({ submit, changed }) => {
                             <i className="material-icons right">done</i>
                         </button>
                     </form>
-                    <p className="login_cadastrese">Novo por aqui? <a>Cadastre-se</a></p>
+                    <div className="login_cadastrese">
+                        <p>Login com sua conta <a>Google</a></p>
+                        <p>Novo por aqui? <a>Cadastre-se</a></p>
+                    </div>
                 </div>
             </div>
     );

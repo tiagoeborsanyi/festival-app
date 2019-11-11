@@ -27,6 +27,10 @@
 }
 
 .login_cadastrese {
-    margin: 60px auto;
+    margin: 70px auto;
 
+}
+
+.login_cadastrese > p {
+    margin-top: 10px;
 }

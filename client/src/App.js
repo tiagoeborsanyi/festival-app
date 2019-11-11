@@ -1,5 +1,6 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import './App.css';
 import Toolbar from './components/Navigation/Toolbar';
@@ -26,4 +27,4 @@ function App() {
   );
 }
 
-export default App;
+export default withRouter(connect(null, null)(App));

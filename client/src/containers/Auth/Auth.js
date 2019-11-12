@@ -30,9 +30,16 @@ class Auth extends Component {
     }
 }
 
+const mapStateToProps = state => {
+    return {
+        isAuthenticated: state.auth.token !== null,
+        authRedirectPath: state.auth.authRedirectPath
+    }
+}
+
 const mapDispatchToProps = dispatch => {
     return {
         onAuth: (email, pass) => dispatch(actions.auth(email, pass))
     }
 }
-export default connect(null, mapDispatchToProps)(Auth);
+export default connect(mapStateToProps, mapDispatchToProps)(Auth);

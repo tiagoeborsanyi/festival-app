@@ -73,7 +73,7 @@ router.post('/login', async (req, res) => {
     const isMatch = await bcrypt.compare(password, user.password);
     if (isMatch) {
         // User Matched
-        const payload = { id: user.id, name: user.name, avatar: user.avatar }; // Create JWT Payload
+        const payload = { id: user.id, name: user.name, avatar: user.avatar, admin: user.admin }; // Create JWT Payload
 
         // Sign Token
         jwt.sign(
@@ -85,7 +85,8 @@ router.post('/login', async (req, res) => {
                 success: true,
                 token: 'Bearer ' + token,
                 expiresIn: 3600,
-                localId: user.id
+                localId: user.id,
+                admin: user.admin
             });
         });
     } else {
@@ -104,7 +105,8 @@ router.get(
       res.json({
         id: req.user.id,
         name: req.user.name,
-        email: req.user.email
+        email: req.user.email,
+        admin: req.user.admin
       });
     }
 );

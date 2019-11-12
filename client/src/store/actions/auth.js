@@ -7,12 +7,12 @@ export const authStart = () => {
     };
 };
 
-export const authSuccess = (token, userId, manager = false) => {
+export const authSuccess = (token, userId, admin = false) => {
     return {
         type: actionTypes.AUTH_SUCCESS,
         token: token,
         userId: userId,
-        manager: manager
+        admin: admin
     };
 };
 
@@ -27,8 +27,7 @@ export const logout = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('expirationDate');
     localStorage.removeItem('userId');
-    // tem que remover a tag de manager
-    // localStorage.removeItem('manager');
+    localStorage.removeItem('admin');
     return {
         type: actionTypes.AUTH_LOGOUT
     }
@@ -48,20 +47,17 @@ export const auth = (email, pass) => async dispatch => {
         const response = await axios.post(url, authData);
         console.log(response)
         if (response) {
-            const { token, expiresIn, localId } = response.data;
+            const { token, expiresIn, localId, admin } = response.data;
             const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
             localStorage.setItem('token', token);
             localStorage.setItem('expirationDate', expirationDate);
             localStorage.setItem('userId', localId);
-            // tem que criar um local storage pra saber se o user é adim ou não
-            //tem que mudar o model da collection pra incluir essa tag
-            // localStorage.setItem('manager', response.data.manager);
-            dispatch(authSuccess(token, localId));
+            localStorage.setItem('admin', response.data.admin);
+            dispatch(authSuccess(token, localId, admin));
             dispatch(checkAuthTimeout(expiresIn));
         }
     } catch (error) {
         dispatch(authFail(error.response.data));
-        console.log(error.response)
     }
     
 }
@@ -83,8 +79,8 @@ export const authCheckState = () => dispatch => {
             dispatch(logout());
         } else {
             const userId = localStorage.getItem('userId');
-            const manager = localStorage.getItem('manager');
-            dispatch(authSuccess(token, userId, manager));
+            const admin = localStorage.getItem('admin');
+            dispatch(authSuccess(token, userId, admin));
             dispatch(checkAuthTimeout((expirationDate.getTime() - new Date().getTime()) / 1000));
         }
     }

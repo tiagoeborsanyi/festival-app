@@ -9,7 +9,7 @@ import Auth from './containers/Auth/Auth';
 import Logout from './containers/Auth/Logout/Logout';
 import Dashboard from './containers/Dashboard/Dashboard';
 import Description from './components/Description/Description';
-import EditFestival from './containers/Festival/EditFestival/EditFestival';
+import NewFestival from './containers/Festival/EditFestival/NewFestival';
 import Footer from './components/Footer/Footer';
 
 class App extends Component {
@@ -29,8 +29,8 @@ class App extends Component {
             <Route path="/login" component={Auth} />
             <Route path="/logout" component={Logout} />
             <Route path="/descricao/:id" component={Description} />
-            <Route path="/add_festival" component={EditFestival} />
-            <Route path="/edit_festival/:eventId" component={EditFestival} />
+            <Route path="/add_festival" component={NewFestival} />
+            <Route path="/edit_festival/:eventId" component={NewFestival} />
           </Switch>
         </div>
         <Footer />

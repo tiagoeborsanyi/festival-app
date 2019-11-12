@@ -26,15 +26,16 @@ class EditEvent extends Component {
         this.setState({festival: updateFestival});
     }
 
-    festivalSubmit = event => {
+    festivalSubmit = (event) => {
         event.preventDefault();
         console.log(this.state.festival)
+        this.props.onFestivalSubmit();
     }
 
     render () {
         return <FormFestival
                 festivalChanged={this.changeFields}
-                festivalSubmit={this.festivalSubmit} />
+                festivalSubmit={(e) => this.festivalSubmit(e)} />
     }
 }
 

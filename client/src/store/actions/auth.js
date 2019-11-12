@@ -60,6 +60,7 @@ export const auth = (email, pass) => async dispatch => {
             dispatch(checkAuthTimeout(expiresIn));
         }
     } catch (error) {
+        dispatch(authFail(error.response.data));
         console.log(error.response)
     }
     

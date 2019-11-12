@@ -7,7 +7,7 @@ import Toolbar from './components/Navigation/Toolbar';
 import Auth from './containers/Auth/Auth';
 import Dashboard from './containers/Dashboard/Dashboard';
 import Description from './components/Description/Description';
-import AddFestival from './components/AddFestival/AddFestival';
+import EditFestival from './containers/Festival/EditFestival/EditFestival';
 import Footer from './components/Footer/Footer';
 
 function App() {
@@ -19,7 +19,8 @@ function App() {
           <Route exact path="/" component={Dashboard} />
           <Route path="/login" component={Auth} />
           <Route path="/descricao/:id" component={Description} />
-          <Route path="/add_festival" component={AddFestival} />
+          <Route path="/add_festival" component={EditFestival} />
+          <Route path="/edit_festival/:eventId" component={EditFestival} />
         </Switch>
       </div>
       <Footer />

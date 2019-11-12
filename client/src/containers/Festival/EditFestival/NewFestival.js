@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import * as actions from '../../../store/actions';
 
 import EditFestival from './EditFestival';
 import ReviewFestival from './ReviewFestival';
@@ -6,6 +8,11 @@ import ReviewFestival from './ReviewFestival';
 class NewFestival extends Component {
     state = {
         showFestivalReview: false
+    }
+
+    componentWillUnmount() {
+        // tem que destruir os dados nesse ciclo de vida
+        console.log('willUnmount')
     }
 
     renderComponent() {

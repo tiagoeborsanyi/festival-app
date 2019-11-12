@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import * as actions from '../../../store/actions';
 
 import FormFestival from '../../../components/FormFestival/FormFestival';
 
@@ -28,7 +30,7 @@ class EditEvent extends Component {
 
     festivalSubmit = (event) => {
         event.preventDefault();
-        console.log(this.state.festival)
+        this.props.onFestival(this.state.festival);
         this.props.onFestivalSubmit();
     }
 
@@ -39,4 +41,10 @@ class EditEvent extends Component {
     }
 }
 
-export default EditEvent;
+const mapDispatchToProps = dispatch => {
+    return {
+        onFestival: (objFestival) => dispatch(actions.festivalStart(objFestival))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(EditEvent);

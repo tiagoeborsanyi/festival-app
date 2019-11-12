@@ -11,8 +11,6 @@ class NewFestival extends Component {
     }
 
     componentWillUnmount() {
-        // tem que destruir os dados nesse ciclo de vida
-        console.log('willUnmount')
         this.props.onFestivalFinish();
     }
 
@@ -20,7 +18,7 @@ class NewFestival extends Component {
         if (this.state.showFestivalReview) {
             return <ReviewFestival onCancel={() => this.setState({showFestivalReview: false})} />
         }
-        return <EditFestival onFestivalSubmit={() => this.setState({showFestivalReview: true})} />
+        return <EditFestival onNewFestival={() => this.setState({showFestivalReview: true})} />
     }
 
     render() {

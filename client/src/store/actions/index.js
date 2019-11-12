@@ -7,5 +7,6 @@ export {
 
 export {
     festivalStart,
+    festivalSubmit,
     festivalFinish
 } from './festival';

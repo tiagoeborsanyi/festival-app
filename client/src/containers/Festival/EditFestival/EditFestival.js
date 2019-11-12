@@ -5,40 +5,30 @@ import * as actions from '../../../store/actions';
 import FormFestival from '../../../components/FormFestival/FormFestival';
 
 class EditEvent extends Component {
-    state = {
-        festival: {
-            active: false,
-            name: '',
-            phone: '',
-            mobile: '',
-            nameCompany: '',
-            state: '',
-            city: '',
-            email: '',
-            EventDate: '',
-            description: ''
-        }
-    }
 
     changeFields = event => {
         event.preventDefault();
-        const { value, name } = event.target;
-        const updateFestival = { ...this.state.festival };
-        updateFestival[name] = value;
-        this.setState({festival: updateFestival});
+        const { name, value } = event.target;
+        this.props.onChangeFestival(name, value);
     }
 
     festivalSubmit = (event) => {
         event.preventDefault();
-        this.props.onFestival(this.state.festival);
-        this.props.onFestivalSubmit();
+        this.props.onNewFestival();
+    }
+
+    cancelFormFestival = (e) => {
+        e.preventDefault();
+        this.props.onFestivalFinish();
+        console.log(this.props.onObjFestival)
     }
 
     render () {
         return <FormFestival
                 festivalChanged={this.changeFields}
                 festivalSubmit={(e) => this.festivalSubmit(e)}
-                objFestival={this.props.onObjFestival ? this.props.onObjFestival : ''} />
+                objFestival={this.props.onObjFestival ? this.props.onObjFestival : ''}
+                cancelFormFestival={this.cancelFormFestival} />
     }
 }
 
@@ -50,7 +40,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onFestival: (objFestival) => dispatch(actions.festivalStart(objFestival))
+        onChangeFestival: (name, value) => dispatch(actions.festivalStart(name, value)),
+        onFestivalFinish: () => dispatch(actions.festivalFinish())
     }
 }
 

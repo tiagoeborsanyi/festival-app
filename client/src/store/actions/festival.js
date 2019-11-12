@@ -1,12 +1,19 @@
 // import axios from 'axios';
 import * as actionTypes from './actionTypes';
 
-export const festivalStart = (objFestival) => {
+export const festivalStart = (name, value) => {
     return {
         type: actionTypes.FESTIVAL_START,
-        festival: objFestival
+        name,
+        value
     };
 };
+
+export const festivalSubmit = () => {
+    return {
+        type: actionTypes.FESTIVAL_SUBMIT
+    }
+}
 
 export const festivalFinish = () => {
     return {

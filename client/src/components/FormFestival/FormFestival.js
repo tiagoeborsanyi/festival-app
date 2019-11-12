@@ -2,7 +2,7 @@ import React from 'react';
 
 import './FormFestival.css';
 
-const FormEvent = ({ festivalSubmit, festivalChanged, festivalTitle }) => {
+const FormEvent = ({ festivalSubmit, festivalChanged, festivalTitle, objFestival }) => {
     return (
         <div className="row festival_container">
             <div className="col s8 festival_col">
@@ -10,7 +10,7 @@ const FormEvent = ({ festivalSubmit, festivalChanged, festivalTitle }) => {
                 <form onSubmit={festivalSubmit}>
                     <div className="festival_item_input">
                         <span>Nome</span>
-                        <input placeholder="Nome" name="name" type="text" onChange={e => festivalChanged(e)} />
+                        <input placeholder="Nome" name="name" type="text" value={objFestival.name} onChange={e => festivalChanged(e)} />
                     </div>
                     <div className="row">
                         <div className="col s6">
@@ -56,6 +56,10 @@ const FormEvent = ({ festivalSubmit, festivalChanged, festivalTitle }) => {
                         <span>Descrição</span>
                         <textarea placeholder="Diga algo a respeido do evento" name="description" className="materialize-textarea" />
                     </div>
+                    <button type="submit" className="red darken-1 btn-flat left white-text">
+                        Cancelar
+                        <i className="material-icons right">cancel</i>
+                    </button>
                     <button type="submit" className="light-blue btn-flat right white-text">
                         Salvar
                         <i className="material-icons right">done</i>

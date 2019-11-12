@@ -6,5 +6,6 @@ export {
 } from './auth';
 
 export {
-    festivalStart
+    festivalStart,
+    festivalFinish
 } from './festival';

@@ -2,18 +2,25 @@ import * as actionTypes from '../actions/actionTypes';
 import { updateObject } from '../utility';
 
 const initialState = {
-    festival: null
+    objFestival: null
 }
 
 const festivalStart = (state, action) => {
     return updateObject(state, {
-        festival: action.festival
+        objFestival: action.festival
+    })
+}
+
+const festivalFinish = (state, action) => {
+    return updateObject(state, {
+        objFestival: null
     })
 }
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.FESTIVAL_START: return festivalStart(state, action);
+        case actionTypes.FESTIVAL_FINISH: return festivalFinish(state, action);
         default: return state;
     }
 }

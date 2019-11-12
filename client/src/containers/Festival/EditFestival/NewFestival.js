@@ -13,6 +13,7 @@ class NewFestival extends Component {
     componentWillUnmount() {
         // tem que destruir os dados nesse ciclo de vida
         console.log('willUnmount')
+        this.props.onFestivalFinish();
     }
 
     renderComponent() {
@@ -31,4 +32,10 @@ class NewFestival extends Component {
     }
 }
 
-export default NewFestival;
+const mapDispatchToProps = dispatch => {
+    return {
+        onFestivalFinish: () => dispatch(actions.festivalFinish())
+    }
+}
+
+export default connect(null, mapDispatchToProps)(NewFestival);

@@ -37,7 +37,14 @@ class EditEvent extends Component {
     render () {
         return <FormFestival
                 festivalChanged={this.changeFields}
-                festivalSubmit={(e) => this.festivalSubmit(e)} />
+                festivalSubmit={(e) => this.festivalSubmit(e)}
+                objFestival={this.props.onObjFestival ? this.props.onObjFestival : ''} />
+    }
+}
+
+const mapStateToProps = state => {
+    return {
+        onObjFestival: state.festival.objFestival
     }
 }
 
@@ -47,4 +54,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(null, mapDispatchToProps)(EditEvent);
+export default connect(mapStateToProps, mapDispatchToProps)(EditEvent);

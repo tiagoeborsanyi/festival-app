@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import './Login.css';
 
@@ -22,8 +23,8 @@ const Login = ({ submit, changed }) => {
                         </button>
                     </form>
                     <div className="login_cadastrese">
-                        <p>Login com sua conta <a>Google</a></p>
-                        <p>Novo por aqui? <a>Cadastre-se</a></p>
+                        <p>Login com sua conta <Link>Google</Link></p>
+                        <p>Novo por aqui? <Link>Cadastre-se</Link></p>
                     </div>
                 </div>
             </div>

@@ -25,7 +25,7 @@ class Auth extends Component {
     render() {
         let authRedirect = null;
         if (this.props.isAuthenticated) {
-            authRedirect = <Redirect to={this.props.history.goBack()} />
+            authRedirect = <Redirect to={this.props.history.go(-1)} />
         }
         return (
             <div>

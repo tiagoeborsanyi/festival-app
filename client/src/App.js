@@ -6,7 +6,7 @@ import * as actions from './store/actions/index';
 import './App.css';
 import Toolbar from './components/Navigation/Toolbar';
 import Auth from './containers/Auth/Auth';
-import Logout from './components/Navigation/Logout/Logout';
+import Logout from './containers/Auth/Logout/Logout';
 import Dashboard from './containers/Dashboard/Dashboard';
 import Description from './components/Description/Description';
 import EditFestival from './containers/Festival/EditFestival/EditFestival';

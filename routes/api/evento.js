@@ -15,7 +15,7 @@ router.get('/test', (req, res) => res.send({ msg: 'Events Works' }));
 
 // @route GET /api/evento/all
 // @desc Events all
-// @access Private
+// @access Public
 router.get('/all', async (req, res) => {
     const events = await Evento.find();
     if (events) {
@@ -27,7 +27,7 @@ router.get('/all', async (req, res) => {
 
 // @route POST /api/evento/:id
 // @desc Event by id
-// @access Private
+// @access Public
 router.get('/:id', async (req, res) => {
     const event = await Evento.findById(req.params.id);
     try {
@@ -39,8 +39,8 @@ router.get('/:id', async (req, res) => {
 
 // @route POST /api/evento
 // @desc Events create
-// @access Private
-router.post('/', passport.authenticate('jwt', { session: false }), async (req, res) => {
+// @access Public
+router.post('/', async (req, res) => {
     const { name, phone, mobile, nameCompany, state, city, email, EventDate, description } = req.body;
     const event = new Evento({
         name, phone, mobile, nameCompany, state, city, email, EventDate, description, _user: req.user.id

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import "./Footer.css";
 
@@ -7,7 +8,7 @@ const Footer = () => (
         <div className="col s3">
             <p>PARTICIPANTES</p>
             <ul>
-                <li>Login</li>
+                <li><Link to="/login">Login</Link></li>
                 <li>Cadastre-se</li>
                 <li>Central de ajuda</li>
                 <li>Termos de compra</li>
@@ -18,7 +19,7 @@ const Footer = () => (
             <p>ORGANIZADORES</p>
             <ul>
                 <li>Sobre a plataforma</li>
-                <li>Crie um Evento</li>
+                <li><Link to="/add_festival">Crie um Evento</Link></li>
                 <li>Suporte</li>
             </ul>
         </div>

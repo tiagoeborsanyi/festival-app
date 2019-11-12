@@ -23,8 +23,8 @@ const Login = ({ submit, changed }) => {
                         </button>
                     </form>
                     <div className="login_cadastrese">
-                        <p>Login com sua conta <Link>Google</Link></p>
-                        <p>Novo por aqui? <Link>Cadastre-se</Link></p>
+                        <p>Login com sua conta <Link to="/">Google</Link></p>
+                        <p>Novo por aqui? <Link to="/">Cadastre-se</Link></p>
                     </div>
                 </div>
             </div>

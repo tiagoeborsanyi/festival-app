@@ -25,7 +25,6 @@ const festivalStart = (state, action) => {
 }
 
 const festivalSubmit = (state, action) => {
-    console.log(state.objFestival)
     return updateObject(state, {
         
     })
@@ -33,18 +32,7 @@ const festivalSubmit = (state, action) => {
 
 const festivalFinish = (state, action) => {
     return updateObject(state, {
-        objFestival: {
-            active: false,
-            name: '',
-            phone: '',
-            mobile: '',
-            nameCompany: '',
-            state: '',
-            city: '',
-            email: '',
-            EventDate: '',
-            description: ''
-        }
+        objFestival: {...initialState.objFestival}
     })
 }
 

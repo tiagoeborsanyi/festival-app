@@ -61,7 +61,7 @@ const FormEvent = ({ festivalSubmit, festivalChanged, festivalTitle, objFestival
                         <i className="material-icons right">cancel</i>
                     </button>
                     <button type="submit" className="light-blue btn-flat right white-text">
-                        Salvar
+                        Continuar
                         <i className="material-icons right">done</i>
                     </button>
                 </form>

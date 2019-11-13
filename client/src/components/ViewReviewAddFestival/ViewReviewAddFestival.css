@@ -1,0 +1,28 @@
+.view_review_container {
+    display: flex;
+    margin: 60px auto;
+}
+
+.view_review_col,
+.view_col {
+    margin: 10px auto 100px auto;
+}
+
+.view_review_title {
+    margin-bottom: 30px;
+    font-weight: bold;
+    font-size: 1.2em;
+    line-height: 1.5;
+}
+
+.view_review_item {
+    margin-bottom: 25px;
+}
+
+.view_review_item span {
+    text-align: left;
+    display: block;
+    margin-bottom: 8px;
+    color: #777571;
+    font-weight: bold;
+}

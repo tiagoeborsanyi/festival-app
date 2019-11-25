@@ -9,14 +9,18 @@ export const festivalStart = (name, value) => {
     };
 };
 
-export const festivalSubmit = (obj) => {
-    console.log(obj)
+export const festivalSubmit = (obj) => async dispatch => {
     // Incluir ações do axios para gravar no banco de dados
     // recebendo o status 200 de gravação então é exibida uma modal falando que foi enviado um email para o usuario e depois o 
     // usurio é redirecionado para a homePage
     // /api/evento
-    return {
-        type: actionTypes.FESTIVAL_SUBMIT
+    try {
+        const response = await axios.post('/api/evento', obj);
+        console.log('response', response);
+        dispatch({ type: actionTypes.FESTIVAL_SUBMIT, status: response.status })
+    } catch (erro) {
+        console.log(erro.response)
+        dispatch({ type: actionTypes.FESTIVAL_SUBMIT, status: erro.response.status })
     }
 }
 

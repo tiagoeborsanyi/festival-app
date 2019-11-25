@@ -20,7 +20,8 @@ const EventoSchema = new Schema({
   },
   _user: {
     type: Schema.Types.ObjectId,
-    ref: 'User'
+    ref: 'User',
+    default: null
   },
   date: {
     type: Date,

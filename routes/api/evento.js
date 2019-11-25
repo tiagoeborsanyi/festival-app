@@ -43,13 +43,13 @@ router.get('/:id', async (req, res) => {
 router.post('/', async (req, res) => {
     const { name, phone, mobile, nameCompany, state, city, email, EventDate, description } = req.body;
     const event = new Evento({
-        name, phone, mobile, nameCompany, state, city, email, EventDate, description, _user: req.user.id
+        name, phone, mobile, nameCompany, state, city, email, EventDate, description
     });
     try {
         const result = await event.save();
         res.status(200).send(result);
     } catch(e) {
-        res.status(400).send(e);
+        res.status(400).send({ error: 'erro para gravar dados' });
     }
 })
 

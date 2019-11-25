@@ -27,7 +27,7 @@ const festivalStart = (state, action) => {
 
 const festivalSubmit = (state, action) => {
     return updateObject(state, {
-        recordStatus: true
+        recordStatus: action.status
     })
 }
 

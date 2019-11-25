@@ -17,11 +17,29 @@ class ReviewFestival extends Component {
     }
 
     render() {
+        let contentModal = null;
+        if (this.props.onRecordStatus === 200) {
+            contentModal = (
+                <div>
+                    <p>Seu evento foi enviado para nossa equipe.</p>
+                    <p>Um email será enviado para você, contendo mais informações.</p>
+                    <p>Obrigado, equipe climb festival.</p>
+                </div>
+            )
+        } else {
+            contentModal = (
+                <div>
+                    <p>Houve um erro para enviar os dados a nossa equipe.</p>
+                    <p>Entre em contato com nossa equipe.</p>
+                    <p>Desculpe pelo inconveniente.</p>
+                </div>
+            )
+        }
         return (
             <div>
                 <Modal show={this.props.onRecordStatus}>
-                    <p>STATUS DE GRAVAÇÂO</p>
-                    <button onClick={() => this.onRedirect()}>OK</button>
+                    {contentModal}
+                    <button className="blue white-text btn-flat" onClick={() => this.onRedirect()}>OK</button>
                 </Modal>
                 <ViewReviewAddFestival
                     onObjFestival={this.props.onObjFestival}

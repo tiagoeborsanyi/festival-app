@@ -14,7 +14,7 @@ const initialState = {
         EventDate: '',
         description: ''
     },
-    recordStatus: false
+    recordStatus: 0
 }
 
 const festivalStart = (state, action) => {

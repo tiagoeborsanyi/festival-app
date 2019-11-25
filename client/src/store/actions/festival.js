@@ -11,6 +11,9 @@ export const festivalStart = (name, value) => {
 
 export const festivalSubmit = (obj) => {
     console.log(obj)
+    // Incluir ações do axios para gravar no banco de dados
+    // recebendo o status 200 de gravação então é exibida uma modal falando que foi enviado um email para o usuario e depois o 
+    // usurio é redirecionado para a homePage
     return {
         type: actionTypes.FESTIVAL_SUBMIT
     }

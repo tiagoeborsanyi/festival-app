@@ -18,7 +18,9 @@ class NewFestival extends Component {
         if (this.state.showFestivalReview) {
             return <ReviewFestival onCancel={() => this.setState({showFestivalReview: false})} />
         }
-        return <EditFestival onNewFestival={() => this.setState({showFestivalReview: true})} />
+        return <EditFestival 
+                    onNewFestival={() => this.setState({showFestivalReview: true})}
+                    cancelForm={this.props.history} />
     }
 
     render() {

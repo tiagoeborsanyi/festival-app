@@ -20,7 +20,7 @@ class EditEvent extends Component {
     cancelFormFestival = (e) => {
         e.preventDefault();
         this.props.onFestivalFinish();
-        console.log(this.props.onObjFestival)
+        this.props.cancelForm.push('/');
     }
 
     render () {

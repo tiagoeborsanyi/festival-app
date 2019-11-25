@@ -9,52 +9,104 @@ const FormEvent = ({ festivalSubmit, festivalChanged, festivalTitle, objFestival
     <div className="login_title">{festivalTitle}</div>
                 <form onSubmit={festivalSubmit}>
                     <div className="festival_item_input">
-                        <span>Nome</span>
-                        <input placeholder="Nome" name="name" type="text" value={objFestival.name} onChange={e => festivalChanged(e)} />
+                        <span>Nome *</span>
+                        <input 
+                            placeholder="Nome" 
+                            name="name" 
+                            type="text" 
+                            value={objFestival.name} 
+                            onChange={e => festivalChanged(e)}
+                            required />
                     </div>
                     <div className="row">
                         <div className="col s6">
                             <div className="festival_item_input">
                                 <span>Telefone</span>
-                                <input placeholder="Telefone" name="phone" type="text" value={objFestival.phone} onChange={e => festivalChanged(e)} />
+                                <input 
+                                    placeholder="Telefone" 
+                                    name="phone" 
+                                    type="text" 
+                                    value={objFestival.phone} 
+                                    onChange={e => festivalChanged(e)} />
                             </div>
                         </div>
                         <div className="col s6">
                         <div className="festival_item_input">
-                            <span>Celular</span>
-                            <input placeholder="Celular" name="mobile" type="text" value={objFestival.mobile} onChange={e => festivalChanged(e)} />
+                            <span>Celular *</span>
+                            <input 
+                                placeholder="Celular" 
+                                name="mobile" 
+                                type="text" 
+                                value={objFestival.mobile} 
+                                onChange={e => festivalChanged(e)}
+                                required />
                         </div>
                         </div>
                     </div>
                     <div className="festival_item_input">
                         <span>Nome da Empresa</span>
-                        <input placeholder="Nome da empresa" name="nameCompany" type="text" value={objFestival.nameCompany} onChange={e => festivalChanged(e)} />
+                        <input 
+                            placeholder="Nome da empresa" 
+                            name="nameCompany" 
+                            type="text" 
+                            value={objFestival.nameCompany} 
+                            onChange={e => festivalChanged(e)} />
                     </div>
                     <div className="row">
                         <div className="col s6">
                             <div className="festival_item_input">
-                                <span>Cidade</span>
-                                <input placeholder="Cidade de realização do evento" name="city" type="text" value={objFestival.city} onChange={e => festivalChanged(e)} />
+                                <span>Cidade *</span>
+                                <input 
+                                    placeholder="Cidade de realização do evento" 
+                                    name="city" 
+                                    type="text" 
+                                    value={objFestival.city} 
+                                    onChange={e => festivalChanged(e)}
+                                    required />
                             </div>
                         </div>
                         <div className="col s6">
                             <div className="festival_item_input">
-                                <span>Estado</span>
-                                <input placeholder="Estado onde será o evento" name="state" type="text" value={objFestival.state} onChange={e => festivalChanged(e)} />
+                                <span>Estado *</span>
+                                <input 
+                                    placeholder="Estado onde será o evento" 
+                                    name="state" 
+                                    type="text" 
+                                    value={objFestival.state} 
+                                    onChange={e => festivalChanged(e)}
+                                    required />
                             </div>
                         </div>
                     </div>
                     <div className="festival_item_input">
-                        <span>Email</span>
-                        <input placeholder="Email para informações" name="email" type="email" value={objFestival.email} onChange={e => festivalChanged(e)} />
+                        <span>Email *</span>
+                        <input 
+                            placeholder="Email para informações" 
+                            name="email" 
+                            type="email" 
+                            value={objFestival.email} 
+                            onChange={e => festivalChanged(e)}
+                            required />
                     </div>
                     <div className="festival_item_input">
-                        <span>Data</span>
-                        <input placeholder="Data de realização do evento" name="EventDate" type="date" value={objFestival.EventDate} onChange={e => festivalChanged(e)} />
+                        <span>Data *</span>
+                        <input 
+                            placeholder="Data de realização do evento" 
+                            name="EventDate" 
+                            type="date" 
+                            value={objFestival.EventDate} 
+                            onChange={e => festivalChanged(e)}
+                            required />
                     </div>
                     <div className="festival_item_input">
-                        <span>Descrição</span>
-                        <textarea placeholder="Diga algo a respeido do evento" name="description" value={objFestival.description} onChange={e => festivalChanged(e)} className="materialize-textarea" />
+                        <span>Descrição *</span>
+                        <textarea 
+                            placeholder="Diga algo a respeido do evento" 
+                            name="description" 
+                            value={objFestival.description} 
+                            onChange={e => festivalChanged(e)} 
+                            className="materialize-textarea"
+                            required />
                     </div>
                     <button className="red darken-1 btn-flat left white-text" onClick={cancelFormFestival}>
                         Cancelar

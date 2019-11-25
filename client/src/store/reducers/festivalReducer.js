@@ -13,7 +13,8 @@ const initialState = {
         email: '',
         EventDate: '',
         description: ''
-    }
+    },
+    recordStatus: false
 }
 
 const festivalStart = (state, action) => {
@@ -26,7 +27,7 @@ const festivalStart = (state, action) => {
 
 const festivalSubmit = (state, action) => {
     return updateObject(state, {
-        
+        recordStatus: true
     })
 }
 

@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 const passport = require('passport');
+const Mailer = require('../../config/Mailer');
+const answerFestivalTemplate = require('../../config/emailTemplate/answerFestivalTemplate');
 
 // Load Input Validation
 
@@ -45,10 +47,13 @@ router.post('/', async (req, res) => {
     const event = new Evento({
         name, phone, mobile, nameCompany, state, city, email, EventDate, description
     });
+    const mailer = new Mailer(event, answerFestivalTemplate(event))
     try {
+        await mailer.send();
         const result = await event.save();
         res.status(200).send(result);
     } catch(e) {
+        console.log(e)
         res.status(400).send({ error: 'erro para gravar dados' });
     }
 })

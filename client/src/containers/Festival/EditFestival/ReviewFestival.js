@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import * as actions from '../../../store/actions';
 
 import ViewReviewAddFestival from '../../../components/ViewReviewAddFestival/ViewReviewAddFestival';
+import Modal from '../../../components/UI/Modal/Modal';
 
 class ReviewFestival extends Component {
 
@@ -10,19 +11,31 @@ class ReviewFestival extends Component {
         this.props.onFestivalSubmit(this.props.onObjFestival);
     }
 
+    onRedirect = () => {
+        console.log('redirect')
+        this.props.onRedirect.push('/');
+    }
+
     render() {
         return (
-            <ViewReviewAddFestival
-                onObjFestival={this.props.onObjFestival}
-                onCancel={this.props.onCancel}
-                recordFestival={this.recordFestival} />
+            <div>
+                <Modal show={this.props.onRecordStatus}>
+                    <p>STATUS DE GRAVAÇÂO</p>
+                    <button onClick={() => this.onRedirect()}>OK</button>
+                </Modal>
+                <ViewReviewAddFestival
+                    onObjFestival={this.props.onObjFestival}
+                    onCancel={this.props.onCancel}
+                    recordFestival={this.recordFestival} />
+            </div>
         )
     }
 }
 
 const mapStateToProps = state => {
     return {
-        onObjFestival: state.festival.objFestival
+        onObjFestival: state.festival.objFestival,
+        onRecordStatus: state.festival.recordStatus
     }
 }
 

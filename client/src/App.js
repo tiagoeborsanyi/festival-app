@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Switch, withRouter } from 'react-router-dom';
+import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from './store/actions/index';
 
@@ -21,20 +21,37 @@ class App extends Component {
   }
 
   render() {
-    return (
-      <div className="container">
-        <Toolbar authToken={this.props.isAuthenticated} />
-        <div className="App">
+    let routes = (
+      <div className="App">
           <Switch>
             <Route exact path="/" component={Dashboard} />
             <Route path="/login" component={Auth} />
+            <Route path="/descricao/:id" component={Description} />
+            <Route path="/add_festival" component={NewFestival} />
+            <Route path="/edit_festival/:eventId" component={NewFestival} />
+            <Redirect to="/" />
+          </Switch>
+        </div>
+    );
+    if (this.props.isAuthenticated) {
+      routes = (
+        <div className="App">
+          <Switch>
+            <Route exact path="/" component={Dashboard} />
             <Route path="/logout" component={Logout} />
             <Route path="/gerencia" component={MenuGerencia} />
             <Route path="/descricao/:id" component={Description} />
             <Route path="/add_festival" component={NewFestival} />
             <Route path="/edit_festival/:eventId" component={NewFestival} />
+            <Redirect to="/" />
           </Switch>
         </div>
+      )
+    }
+    return (
+      <div className="container">
+        <Toolbar authToken={this.props.isAuthenticated} />
+          {routes}
         <Footer />
       </div>
     );

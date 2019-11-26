@@ -48,7 +48,7 @@ export const auth = (email, pass) => async dispatch => {
         console.log(response)
         if (response) {
             const { token, expiresIn, localId, admin } = response.data;
-            const expirationDate = new Date(new Date().getTime() + expiresIn * 1000 * 30);
+            const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
             localStorage.setItem('token', token);
             localStorage.setItem('expirationDate', expirationDate);
             localStorage.setItem('userId', localId);

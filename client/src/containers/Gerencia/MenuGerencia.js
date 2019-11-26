@@ -3,6 +3,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 
 import MenuLinkGerencia from '../../components/Gerencia/MenuLinkGerencia';
 import ListEvents from './Eventos/Eventos';
+import EventoId from './Eventos/EventoId';
 import ListUsers from '../../components/Gerencia/Users/ListUsers';
 
 
@@ -12,6 +13,7 @@ class MenuGerencia extends Component {
             <MenuLinkGerencia>
                 <Switch>
                     <Route path="/gerencia/list-events" component={ListEvents} />
+                    <Route exact path="/gerencia/evento/:id" component={EventoId} />
                     <Route path="/gerencia/list-users" component={ListUsers} />
                     <Redirect to="/gerencia/list-events" />
                 </Switch>

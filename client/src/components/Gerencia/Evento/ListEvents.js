@@ -21,7 +21,7 @@ const ListEvents = props => {
                     <tbody>
                         {props.dados.map(evt => (
                             <tr key={evt._id}>
-                                <td><Link className="" to={`/gerencia/${evt._id}`}>{evt.name}</Link></td>
+                                <td><Link to={`/gerencia/evento/${evt._id}`}>{evt.name}</Link></td>
                                 <td>{evt.date}</td>
                                 <td>{evt.active ? 'Ativo' : 'Pendente'}</td>
                             </tr>

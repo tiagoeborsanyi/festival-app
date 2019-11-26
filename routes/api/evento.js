@@ -71,4 +71,17 @@ router.post('/publish', passport.authenticate('jwt', { session: false }), async 
     }
 });
 
+// @route POST /api/evento/delete
+// @desc Events Delete
+// @access Private
+router.delete('/delete/:id', passport.authenticate('jwt', { session: false}), async (req, res) => {
+    console.log(req.params.id)
+    try {
+        const response = await Evento.findOneAndDelete({ _id: req.params.id });
+        res.status(200).send(response);
+    } catch (error) {
+        res.status(400).send(error);
+    }
+})
+
 module.exports = router;

@@ -3,12 +3,16 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 
 import ReviewEvento from '../../../components/ViewReviewAddFestival/ViewReviewAddFestival';
+import Modal from '../../../components/UI/Modal/Modal';
 import Spinner from '../../../components/UI/Spinner/Spinner';
 
 class EventoId extends Component {
     state = {
         evt: null,
-        load: false
+        load: false,
+        publish: false,
+        delete: false,
+        errorDelete: false
     }
     async componentDidMount() {
         const res = await axios.get(`/api/evento/${this.props.match.params.id}`);
@@ -28,8 +32,21 @@ class EventoId extends Component {
         console.log('Editar');
     }
 
-    excludeFestival = () => {
-        console.log('Excluir')
+    excludeFestival = async (id) => {
+        this.setState({ delete: true });
+        if (id) {
+            try {
+                const res = await axios.delete(`/api/evento/delete/${id}`, { headers: {"Authorization" : this.props.token}});
+                console.log(res)
+                res.status === 200 && this.props.history.push('/gerencia/list-events')
+            } catch (e) {
+                console.log(e.response);
+            }
+        }
+    }
+
+    cancelDeleteFestivao = () => {
+        this.setState({ delete: false });
     }
 
     render() {
@@ -51,6 +68,11 @@ class EventoId extends Component {
 
         return (
             <div>
+                <Modal show={this.state.delete}>
+                    <h4>Tem certeza que deseja apagar este festival?</h4>
+                    <button className="yellow darken-3 white-text btn-flat left" onClick={this.cancelDeleteFestivao}>Cancelar</button>
+                    <button className="red darken-3 white-text btn-flat right" onClick={() => this.excludeFestival(this.props.match.params.id)}>Apagar</button>
+                </Modal>
                 {isLoad}
             </div>
         )

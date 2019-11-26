@@ -1,0 +1,12 @@
+.menu_link_gerencia_ul {
+    text-align: left;
+}
+
+.menu_link_gerencia_ul li {
+    margin-bottom: 10px;
+}
+
+.menu_link_gerencia_ul li a {
+    color: #3c5936;
+    font-size: 1.2em;
+}

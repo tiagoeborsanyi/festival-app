@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 
 import MenuLinkGerencia from '../../components/Gerencia/MenuLinkGerencia';
-import ListEvents from '../../components/Gerencia/Evento/ListEvents';
+import ListEvents from './Eventos/Eventos';
 import ListUsers from '../../components/Gerencia/Users/ListUsers';
 
 

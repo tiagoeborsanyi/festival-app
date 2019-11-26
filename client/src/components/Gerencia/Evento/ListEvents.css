@@ -1,4 +1,4 @@
 .list_events {
-    display: flex;
-    margin: 60px auto;
+    display: block;
+    margin: 0px auto;
 }

@@ -11,7 +11,6 @@ class Eventos extends Component {
     async componentDidMount() {
         const res = await axios.get('/api/evento/all');
         this.setState({ ev: res.data });
-        console.log(res);
     }
 
     render() {

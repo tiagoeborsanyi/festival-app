@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import axios from 'axios';
 
 import ReviewEvento from '../../../components/ViewReviewAddFestival/ViewReviewAddFestival';
@@ -14,6 +15,23 @@ class EventoId extends Component {
         this.setState({ load: true, evt: res.data });
     }
 
+    publishFestival = async () => {
+        const obj = {
+            id: this.props.match.params.id,
+            active: true
+        }
+        const res = await axios.post('/api/evento/publish', obj, { headers: {"Authorization" : this.props.token}});
+        console.log(res);
+    }
+
+    editFestival = () => {
+        console.log('Editar');
+    }
+
+    excludeFestival = () => {
+        console.log('Excluir')
+    }
+
     render() {
         let isLoad = <Spinner />;
         if (this.state.load) {
@@ -23,7 +41,10 @@ class EventoId extends Component {
                        onObjFestival={this.state.evt}
                        viewDisplay='inline-block'
                        record='Publicar'
-                       onCancel={() => this.props.history.goBack()} />
+                       onCancel={() => this.props.history.goBack()}
+                       recordFestival={this.publishFestival}
+                       editFestival={this.editFestival}
+                       excludeFestival={this.excludeFestival} />
                 </div>
             )
         }
@@ -36,4 +57,10 @@ class EventoId extends Component {
     }
 }
 
-export default EventoId;
+const mapStateToProps = state => {
+    return {
+        token: state.auth.token
+    }
+}
+
+export default connect(mapStateToProps)(EventoId);

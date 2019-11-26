@@ -58,4 +58,17 @@ router.post('/', async (req, res) => {
     }
 })
 
+// @route POST /api/evento/publish
+// @desc Events Update
+// @access Private
+router.post('/publish', passport.authenticate('jwt', { session: false }), async (req, res) => {
+    const { id, active } = req.body;
+    try {
+        const response = await Evento.updateOne({ _id: id }, { active: active }).exec();
+        res.status(200).send(response);
+    } catch (error) {
+        res.status(401).send(error);
+    }
+});
+
 module.exports = router;

@@ -2,7 +2,7 @@ import React from 'react';
 
 import './ViewReviewAddFestival.css';
 
-const ViewReviewAddFestival = ({ onObjFestival, onCancel, recordFestival, viewDisplay, record }) => {
+const ViewReviewAddFestival = ({ onObjFestival, onCancel, recordFestival, editFestival, excludeFestival, viewDisplay, record }) => {
     return (
         <div className="row view_review_container">
             <div className="col s8 view_col">
@@ -65,10 +65,16 @@ const ViewReviewAddFestival = ({ onObjFestival, onCancel, recordFestival, viewDi
                     {record}
                     <i className="material-icons right">done</i>
                 </button>
-                <button className="red white-text btn-flat right" style={{display: viewDisplay, marginRight: '10px'}}>
+                <button 
+                    className="red white-text btn-flat right" 
+                    style={{display: viewDisplay, marginRight: '10px'}}
+                    onClick={excludeFestival}>
                     Excluir
                 </button>
-                <button className="blue white-text btn-flat right" style={{display: viewDisplay, marginRight: '10px'}}>
+                <button 
+                    className="blue white-text btn-flat right" 
+                    style={{display: viewDisplay, marginRight: '10px'}}
+                    onClick={editFestival}>
                     Editar
                 </button>
             </div>

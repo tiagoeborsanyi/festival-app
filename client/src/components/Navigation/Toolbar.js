@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import './Toolbar.css';
 
@@ -21,13 +22,20 @@ const Toolbar = (props) => {
               </Link>
             </div>
             <ul className="right hide-on-med-and-down">
+              { props.isAdmin && <li><Link to="/gerencia">Gerenciar</Link></li> }
               <li><Link to="/add_festival"><span>Crie um evento</span></Link></li>
               {auth}
             </ul>
           </div>
         </nav>
     </header>
-)
+  )
 }
 
-export default Toolbar;
+const mapStateToProps = state => {
+  return {
+    isAdmin: state.auth.admin
+  }
+}
+
+export default connect(mapStateToProps)(Toolbar);

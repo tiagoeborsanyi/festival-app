@@ -5,6 +5,7 @@ import * as actions from './store/actions/index';
 
 import './App.css';
 import Toolbar from './components/Navigation/Toolbar';
+import MenuGerencia from './containers/Gerencia/MenuGerencia';
 import Auth from './containers/Auth/Auth';
 import Logout from './containers/Auth/Logout/Logout';
 import Dashboard from './containers/Dashboard/Dashboard';
@@ -28,6 +29,7 @@ class App extends Component {
             <Route exact path="/" component={Dashboard} />
             <Route path="/login" component={Auth} />
             <Route path="/logout" component={Logout} />
+            <Route path="/gerencia" component={MenuGerencia} />
             <Route path="/descricao/:id" component={Description} />
             <Route path="/add_festival" component={NewFestival} />
             <Route path="/edit_festival/:eventId" component={NewFestival} />

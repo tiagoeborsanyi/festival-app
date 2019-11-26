@@ -16,10 +16,8 @@ export const festivalSubmit = (obj) => async dispatch => {
     // /api/evento
     try {
         const response = await axios.post('/api/evento', obj);
-        console.log('response', response);
         dispatch({ type: actionTypes.FESTIVAL_SUBMIT, status: response.status })
     } catch (erro) {
-        console.log(erro.response)
         dispatch({ type: actionTypes.FESTIVAL_SUBMIT, status: erro.response.status })
     }
 }

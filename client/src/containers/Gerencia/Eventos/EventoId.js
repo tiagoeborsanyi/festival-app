@@ -34,7 +34,7 @@ class EventoId extends Component {
 
     excludeFestival = async (id) => {
         this.setState({ delete: true });
-        if (id) {
+        if (id && this.state.delete) {
             try {
                 const res = await axios.delete(`/api/evento/delete/${id}`, { headers: {"Authorization" : this.props.token}});
                 console.log(res)

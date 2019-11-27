@@ -12,7 +12,7 @@ const EventoSchema = new Schema({
   city: String,
   email: String,
   EventDate: Date,
-  description: String,
+  description: Object,
   recipients: [recipientSchema],
   active: {
     type: Boolean,

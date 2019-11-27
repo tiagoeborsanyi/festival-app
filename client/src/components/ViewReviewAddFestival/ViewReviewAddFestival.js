@@ -1,4 +1,6 @@
 import React from 'react';
+import draftToHtml from 'draftjs-to-html';
+import convert from 'htmr';
 
 import './ViewReviewAddFestival.css';
 
@@ -54,7 +56,7 @@ const ViewReviewAddFestival = ({ onObjFestival, onCancel, recordFestival, editFe
             </div>
             <div className="row view_review_item">
                 <div className="col s12">
-                    <span>Descrição: {onObjFestival.description}</span>
+                    <span>Descrição: {convert(draftToHtml(onObjFestival.description))}</span>
                 </div>
             </div>
             <div>

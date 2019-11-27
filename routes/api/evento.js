@@ -47,8 +47,8 @@ router.post('/', async (req, res) => {
     const event = new Evento({
         name, phone, mobile, nameCompany, state, city, email, EventDate, description
     });
-    const mailer = new Mailer(event, answerFestivalTemplate(event))
     try {
+        const mailer = new Mailer(event, answerFestivalTemplate(event))
         await mailer.send();
         const result = await event.save();
         res.status(200).send(result);

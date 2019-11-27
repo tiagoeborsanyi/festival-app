@@ -40,6 +40,7 @@ class EditEvent extends Component {
     festivalSubmit = (event) => {
         event.preventDefault();
         if (this.props.history) {
+            // aqui eu tenho que setar o redux e voltar lá pro form de review e depois o usuario salva
             console.log('gerencia edit')
         } else {
             this.props.onNewFestival();
@@ -49,7 +50,8 @@ class EditEvent extends Component {
     cancelFormFestival = (e) => {
         e.preventDefault();
         if (this.props.history) {
-            this.props.history.go(-1);
+            this.props.onFestivalGerenciaIniEdit({name: ''});
+            this.props.history.push('/gerencia/list-events');
         } else {
             this.props.onFestivalFinish();
             this.props.cancelForm.push('/');
@@ -80,7 +82,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         onChangeFestival: (name, value) => dispatch(actions.festivalStart(name, value)),
-        onFestivalFinish: () => dispatch(actions.festivalFinish())
+        onFestivalFinish: () => dispatch(actions.festivalFinish()),
+        onFestivalGerenciaIniEdit: (obj) => dispatch(actions.festivalGerenciaInitEdit(obj))
     }
 }
 

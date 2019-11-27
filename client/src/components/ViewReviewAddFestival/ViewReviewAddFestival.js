@@ -4,7 +4,7 @@ import convert from 'htmr';
 
 import './ViewReviewAddFestival.css';
 
-const ViewReviewAddFestival = ({ onObjFestival, onCancel, recordFestival, editFestival, excludeFestival, viewDisplay, record }) => {
+const ViewReviewAddFestival = ({ onObjFestival, onCancel, recordFestival, activeAndPublish, editFestival, excludeFestival, viewDisplay, record }) => {
     return (
         <div className="row view_review_container">
             <div className="col s8 view_col">
@@ -60,22 +60,28 @@ const ViewReviewAddFestival = ({ onObjFestival, onCancel, recordFestival, editFe
                 </div>
             </div>
             <div>
-                <button className="yellow darken-3 white-text btn-flat left" onClick={onCancel}>
+                <button className="yellow darken-3 white-text btn-flat left btn-small" onClick={onCancel}>
                     voltar
                 </button>
-                <button className="green white-text btn-flat right" onClick={recordFestival}>
+                <button className="green white-text btn-flat right btn-small" onClick={recordFestival}>
                     {record}
                     <i className="material-icons right">done</i>
                 </button>
                 <button 
-                    className="red white-text btn-flat right" 
-                    style={{display: viewDisplay, marginRight: '10px'}}
+                    className="green darken-2 white-text btn-flat right btn-small" 
+                    style={{display: viewDisplay, marginRight: '3px'}}
+                    onClick={activeAndPublish}>
+                    Ativar e Publicar
+                </button>
+                <button 
+                    className="red white-text btn-flat right btn-small" 
+                    style={{display: viewDisplay, marginRight: '3px'}}
                     onClick={excludeFestival}>
                     Excluir
                 </button>
                 <button 
-                    className="blue white-text btn-flat right" 
-                    style={{display: viewDisplay, marginRight: '10px'}}
+                    className="blue white-text btn-flat right btn-small" 
+                    style={{display: viewDisplay, marginRight: '3px'}}
                     onClick={editFestival}>
                     Editar
                 </button>

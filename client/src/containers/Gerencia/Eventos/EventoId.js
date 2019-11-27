@@ -35,6 +35,10 @@ class EventoId extends Component {
         console.log(res);
     }
 
+    activeAndPublish = () => {
+        console.log('ativar e publicar')
+    }
+
     editFestival = (event) => {
         event.preventDefault();
         this.props.onFestivalGerenciaIniEdit(this.state.evt);
@@ -66,9 +70,10 @@ class EventoId extends Component {
                     <ReviewEvento
                        onObjFestival={this.state.evt}
                        viewDisplay='inline-block'
-                       record='Publicar'
+                       record='Ativar'
                        onCancel={() => this.props.history.goBack()}
                        recordFestival={this.publishFestival}
+                       activeAndPublish={this.activeAndPublish}
                        editFestival={(e) => this.editFestival(e)}
                        excludeFestival={this.excludeFestival} />
                 </div>

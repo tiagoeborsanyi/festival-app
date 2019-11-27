@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import * as actions from '../../../store/actions';
 import axios from 'axios';
 
 import ReviewEvento from '../../../components/ViewReviewAddFestival/ViewReviewAddFestival';
@@ -15,8 +16,14 @@ class EventoId extends Component {
         errorDelete: false
     }
     async componentDidMount() {
-        const res = await axios.get(`/api/evento/${this.props.match.params.id}`);
-        this.setState({ load: true, evt: res.data });
+        console.log(this.props.objFestival.name.length)
+        if(this.props.objFestival.name.length) {
+            this.setState({ load: true, evt: this.props.objFestival });
+        } else {
+            const res = await axios.get(`/api/evento/${this.props.match.params.id}`);
+            console.log(res)
+            this.setState({ load: true, evt: res.data });
+        }
     }
 
     publishFestival = async () => {
@@ -28,8 +35,10 @@ class EventoId extends Component {
         console.log(res);
     }
 
-    editFestival = () => {
-        console.log('Editar');
+    editFestival = (event) => {
+        event.preventDefault();
+        this.props.onFestivalGerenciaIniEdit(this.state.evt);
+        this.props.history.push('/gerencia/edit-festival')
     }
 
     excludeFestival = async (id) => {
@@ -60,7 +69,7 @@ class EventoId extends Component {
                        record='Publicar'
                        onCancel={() => this.props.history.goBack()}
                        recordFestival={this.publishFestival}
-                       editFestival={this.editFestival}
+                       editFestival={(e) => this.editFestival(e)}
                        excludeFestival={this.excludeFestival} />
                 </div>
             )
@@ -81,8 +90,15 @@ class EventoId extends Component {
 
 const mapStateToProps = state => {
     return {
-        token: state.auth.token
+        token: state.auth.token,
+        objFestival: state.festival.objFestival
     }
 }
 
-export default connect(mapStateToProps)(EventoId);
+const mapDispatchToProps = dispatch => {
+    return {
+        onFestivalGerenciaIniEdit: (obj) => dispatch(actions.festivalGerenciaInitEdit(obj))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(EventoId);

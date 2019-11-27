@@ -17,6 +17,14 @@ const initialState = {
     recordStatus: 0
 }
 
+const festivalGerenciaInitEdit = (state, action) => {
+    let updateFestival = { ...state.objFestival };
+    updateFestival = action.obj;
+    return updateObject(state, {
+        objFestival: updateFestival
+    })
+}
+
 const festivalStart = (state, action) => {
         const updateFestival = { ...state.objFestival };
         updateFestival[action.name] = action.value;
@@ -39,6 +47,7 @@ const festivalFinish = (state, action) => {
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
+        case actionTypes.GERENCIA_INIT_EDIT: return festivalGerenciaInitEdit(state, action);
         case actionTypes.FESTIVAL_START: return festivalStart(state, action);
         case actionTypes.FESTIVAL_SUBMIT: return festivalSubmit(state, action);
         case actionTypes.FESTIVAL_FINISH: return festivalFinish(state, action);

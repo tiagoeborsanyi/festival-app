@@ -9,6 +9,13 @@ export const festivalStart = (name, value) => {
     };
 };
 
+export const festivalGerenciaInitEdit = (obj) => {
+    return {
+        type: actionTypes.GERENCIA_INIT_EDIT,
+        obj
+    }
+}
+
 export const festivalSubmit = (obj) => async dispatch => {
     // Incluir ações do axios para gravar no banco de dados
     // recebendo o status 200 de gravação então é exibida uma modal falando que foi enviado um email para o usuario e depois o 

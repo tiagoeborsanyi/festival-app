@@ -39,13 +39,21 @@ class EditEvent extends Component {
 
     festivalSubmit = (event) => {
         event.preventDefault();
-        this.props.onNewFestival();
+        if (this.props.history) {
+            console.log('gerencia edit')
+        } else {
+            this.props.onNewFestival();
+        }
     }
 
     cancelFormFestival = (e) => {
         e.preventDefault();
-        this.props.onFestivalFinish();
-        this.props.cancelForm.push('/');
+        if (this.props.history) {
+            this.props.history.go(-1);
+        } else {
+            this.props.onFestivalFinish();
+            this.props.cancelForm.push('/');
+        }
     }
 
     render () {

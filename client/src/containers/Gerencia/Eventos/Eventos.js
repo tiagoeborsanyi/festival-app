@@ -9,7 +9,8 @@ class Eventos extends Component {
     state = {
         ev: [],
         status: false,
-        load: false
+        load: false,
+        idLoad: null
     }
 
     async componentDidMount() {
@@ -18,6 +19,7 @@ class Eventos extends Component {
     }
 
     changeCheck = async (e) => {
+        this.setState({load: true, idLoad: e.target.name});
         const index = this.state.ev.findIndex(x => x._id === e.target.name)
         const obj = {
             id: e.target.name,
@@ -28,23 +30,14 @@ class Eventos extends Component {
         if (res.status === 200) {
             const updateObj = [...this.state.ev]
             updateObj[index]['active'] = obj.active;
-            this.setState({ ev: updateObj})
+            this.setState({ ev: updateObj, load: false, idLoad: null});
         }
     }
 
     render() {
-        // esse spinner eu tenho que fazer uma troca do checked...
-        // quando o usuario clica entao é colocado um spinner 
-        // quando o servidor retorna 200, entao o checked é mostrado novamente contendo o novo valor
-        // se houver algum erro então é mostrado uma modal pro usuario dizendo que houve um erro, 
-        // entao o checked volta ao estado de inicio
-        let spinner = null;
-        if (this.state.load) {
-            spinner = <Spinner />
-        }
         return (
             <div>
-                <ListEvents dados={this.state.ev} changeCheck={this.changeCheck} />
+                <ListEvents dados={this.state.ev} changeCheck={this.changeCheck} load={this.state.load} idLoad={this.state.idLoad} />
             </div>
         )
     }

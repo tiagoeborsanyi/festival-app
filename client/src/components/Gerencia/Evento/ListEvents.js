@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import Spinner from '../../UI/Spinner/Spinner';
+
 import './ListEvents.css';
 
 const ListEvents = props => {
@@ -26,14 +28,29 @@ const ListEvents = props => {
                                 <td>{evt.date}</td>
                                 <td>{evt.active ? 'Ativo' : 'Pendente'}</td>
                                 <td>
-                                <div className="switch">
+                                {(props.load && evt._id === props.idLoad) 
+                                    ?
+                                    <div className="preloader-wrapper small active">
+                                        <div className="spinner-layer spinner-green-only">
+                                        <div className="circle-clipper left">
+                                            <div className="circle"></div>
+                                        </div><div className="gap-patch">
+                                            <div className="circle"></div>
+                                        </div><div className="circle-clipper right">
+                                            <div className="circle"></div>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    :
+                                    <div className="switch">
                                     <label>
-                                    Pendente
+                                        Pendente
                                     <input type="checkbox" name={evt._id} checked={evt.active} onChange={e => props.changeCheck(e)} />
                                     <span className="lever"></span>
-                                    Ativo
+                                        Ativo
                                     </label>
-                                </div>
+                                    </div>
+                                }
                                 </td>
                             </tr>
                         ))}

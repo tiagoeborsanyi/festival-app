@@ -1,8 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import Spinner from '../../UI/Spinner/Spinner';
-
 import './ListEvents.css';
 
 const ListEvents = props => {

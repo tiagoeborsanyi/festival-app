@@ -26,13 +26,11 @@ class EventoId extends Component {
         }
     }
 
-    publishFestival = async () => {
+    addIncricao = async () => {
         const obj = {
-            id: this.props.match.params.id,
-            active: true
+            id: this.props.match.params.id
         }
-        const res = await axios.post('/api/evento/publish', obj, { headers: {"Authorization" : this.props.token}});
-        console.log(res);
+        console.log('adiciona inscrição', obj);
     }
 
     editFestival = (event) => {
@@ -66,9 +64,9 @@ class EventoId extends Component {
                     <ReviewEvento
                        onObjFestival={this.state.evt}
                        viewDisplay='inline-block'
-                       record='Ativar'
+                       record='Add Inscrição'
                        onCancel={() => this.props.history.goBack()}
-                       recordFestival={this.publishFestival}
+                       recordFestival={this.addIncricao}
                        editFestival={(e) => this.editFestival(e)}
                        excludeFestival={this.excludeFestival} />
                 </div>

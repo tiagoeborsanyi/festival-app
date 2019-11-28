@@ -3,7 +3,6 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 
 import ListEvents from '../../../components/Gerencia/Evento/ListEvents';
-import Spinner from '../../../components/UI/Spinner/Spinner';
 
 class Eventos extends Component {
     state = {

@@ -94,7 +94,7 @@ const FormEvent = ({ festivalSubmit, festivalChanged, festivalTitle, objFestival
                             placeholder="Data de realização do evento" 
                             name="EventDate" 
                             type="date" 
-                            value={objFestival.EventDate} 
+                            value={objFestival.EventDate.split('T')[0]} 
                             onChange={e => festivalChanged(e)}
                             required />
                     </div>

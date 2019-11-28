@@ -15,7 +15,7 @@ class MenuGerencia extends Component {
                 <Switch>
                     <Route path="/gerencia/list-events" component={ListEvents} />
                     <Route exact path="/gerencia/evento/:id" component={EventoId} />
-                    <Route path="/gerencia/edit-festival" component={EditFestival} />
+                    <Route path="/gerencia/edit-festival/:id" component={EditFestival} />
                     <Route path="/gerencia/list-users" component={ListUsers} />
                     <Redirect to="/gerencia/list-events" />
                 </Switch>

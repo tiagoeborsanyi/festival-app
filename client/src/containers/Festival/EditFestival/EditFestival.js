@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import { connect } from 'react-redux';
 import * as actions from '../../../store/actions';
 import { EditorState, ContentState, convertToRaw } from 'draft-js';
@@ -37,11 +38,14 @@ class EditEvent extends Component {
         this.props.onChangeFestival('description', convertToRaw(editorState.getCurrentContent()));
     }
 
-    festivalSubmit = (event) => {
+    festivalSubmit = async (event) => {
         event.preventDefault();
         if (this.props.history) {
             // aqui eu tenho que setar o redux e voltar lá pro form de review e depois o usuario salva
-            console.log('gerencia edit')
+            const obj = { id: this.props.match.params.id, obj: this.props.onObjFestival }
+            const res = await axios.post('/api/evento/edit', obj, { headers: {"Authorization" : this.props.token}});
+            
+            this.props.history.go(-1);
         } else {
             this.props.onNewFestival();
         }
@@ -75,7 +79,8 @@ class EditEvent extends Component {
 
 const mapStateToProps = state => {
     return {
-        onObjFestival: state.festival.objFestival
+        onObjFestival: state.festival.objFestival,
+        token: state.auth.token
     }
 }
 

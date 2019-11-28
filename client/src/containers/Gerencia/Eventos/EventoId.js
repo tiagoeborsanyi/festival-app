@@ -35,14 +35,10 @@ class EventoId extends Component {
         console.log(res);
     }
 
-    activeAndPublish = () => {
-        console.log('ativar e publicar')
-    }
-
     editFestival = (event) => {
         event.preventDefault();
         this.props.onFestivalGerenciaIniEdit(this.state.evt);
-        this.props.history.push('/gerencia/edit-festival')
+        this.props.history.push(`/gerencia/edit-festival/${this.props.match.params.id}`);
     }
 
     excludeFestival = async (id) => {
@@ -73,7 +69,6 @@ class EventoId extends Component {
                        record='Ativar'
                        onCancel={() => this.props.history.goBack()}
                        recordFestival={this.publishFestival}
-                       activeAndPublish={this.activeAndPublish}
                        editFestival={(e) => this.editFestival(e)}
                        excludeFestival={this.excludeFestival} />
                 </div>

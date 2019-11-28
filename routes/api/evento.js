@@ -71,11 +71,24 @@ router.post('/publish', passport.authenticate('jwt', { session: false }), async 
     }
 });
 
+// @route POST /api/evento/edit
+// @desc Events Update
+// @access Private
+router.post('/edit', passport.authenticate('jwt', { session: false }), async (req, res) => {
+    const { id, obj } = req.body;
+    try {
+        const response = await Evento.findByIdAndUpdate({_id: id}, { $set: obj }).exec();
+        res.status(200).send(response);
+    } catch (error) {
+        res.status(401).send(error);
+    }
+});
+
 // @route POST /api/evento/delete
 // @desc Events Delete
 // @access Private
 router.delete('/delete/:id', passport.authenticate('jwt', { session: false}), async (req, res) => {
-    console.log(req.params.id)
+    console.log('delete', req.params.id)
     try {
         const response = await Evento.findOneAndDelete({ _id: req.params.id });
         res.status(200).send(response);

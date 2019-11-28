@@ -4,7 +4,7 @@ import convert from 'htmr';
 
 import './ViewReviewAddFestival.css';
 
-const ViewReviewAddFestival = ({ onObjFestival, onCancel, recordFestival, activeAndPublish, editFestival, excludeFestival, viewDisplay, record }) => {
+const ViewReviewAddFestival = ({ onObjFestival, onCancel, recordFestival, editFestival, excludeFestival, viewDisplay, record }) => {
     return (
         <div className="row view_review_container">
             <div className="col s8 view_col">
@@ -51,7 +51,7 @@ const ViewReviewAddFestival = ({ onObjFestival, onCancel, recordFestival, active
             </div>
             <div className="row view_review_item">
                 <div className="col s12">
-                    <span>Data: {onObjFestival.EventDate}</span>
+                    <span>Data: {onObjFestival.EventDate.split('T')[0].split('-').reverse().join('-')}</span>
                 </div>
             </div>
             <div className="row view_review_item">
@@ -66,12 +66,6 @@ const ViewReviewAddFestival = ({ onObjFestival, onCancel, recordFestival, active
                 <button className="green white-text btn-flat right btn-small" onClick={recordFestival}>
                     {record}
                     <i className="material-icons right">done</i>
-                </button>
-                <button 
-                    className="green darken-2 white-text btn-flat right btn-small" 
-                    style={{display: viewDisplay, marginRight: '3px'}}
-                    onClick={activeAndPublish}>
-                    Ativar e Publicar
                 </button>
                 <button 
                     className="red white-text btn-flat right btn-small" 

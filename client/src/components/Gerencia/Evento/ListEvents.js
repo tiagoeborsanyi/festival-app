@@ -16,6 +16,7 @@ const ListEvents = props => {
                             <th>Nome</th>
                             <th>Solicitação</th>
                             <th>Status</th>
+                            <th>Ativar/Desativar</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -24,6 +25,16 @@ const ListEvents = props => {
                                 <td><Link to={`/gerencia/evento/${evt._id}`}>{evt.name}</Link></td>
                                 <td>{evt.date}</td>
                                 <td>{evt.active ? 'Ativo' : 'Pendente'}</td>
+                                <td>
+                                <div className="switch">
+                                    <label>
+                                    Pendente
+                                    <input type="checkbox" name={evt._id} checked={evt.active} onChange={e => props.changeCheck(e)} />
+                                    <span className="lever"></span>
+                                    Ativo
+                                    </label>
+                                </div>
+                                </td>
                             </tr>
                         ))}
                     </tbody>

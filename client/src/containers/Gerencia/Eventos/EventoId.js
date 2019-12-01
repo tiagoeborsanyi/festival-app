@@ -68,7 +68,11 @@ class EventoId extends Component {
                        onCancel={() => this.props.history.goBack()}
                        recordFestival={this.addIncricao}
                        editFestival={(e) => this.editFestival(e)}
-                       excludeFestival={this.excludeFestival} />
+                       excludeFestival={this.excludeFestival}>
+                           <div>
+                               INSCRIÇÔES ESPAÇO
+                           </div>
+                       </ReviewEvento>
                 </div>
             )
         }

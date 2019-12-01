@@ -4,7 +4,7 @@ import convert from 'htmr';
 
 import './ViewReviewAddFestival.css';
 
-const ViewReviewAddFestival = ({ onObjFestival, onCancel, recordFestival, editFestival, excludeFestival, viewDisplay, record }) => {
+const ViewReviewAddFestival = ({ children, onObjFestival, onCancel, recordFestival, editFestival, excludeFestival, viewDisplay, record }) => {
     return (
         <div className="row view_review_container">
             <div className="col s8 view_col">
@@ -58,6 +58,9 @@ const ViewReviewAddFestival = ({ onObjFestival, onCancel, recordFestival, editFe
                 <div className="col s12">
                     <span>Descrição: {convert(draftToHtml(onObjFestival.description))}</span>
                 </div>
+            </div>
+            <div className="row view_review_item">
+                {children}
             </div>
             <div>
                 <button className="yellow darken-3 white-text btn-flat left btn-small" onClick={onCancel}>

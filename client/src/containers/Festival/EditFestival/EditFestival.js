@@ -41,7 +41,6 @@ class EditEvent extends Component {
     festivalSubmit = async (event) => {
         event.preventDefault();
         if (this.props.history) {
-            // aqui eu tenho que setar o redux e voltar lá pro form de review e depois o usuario salva
             const obj = { id: this.props.match.params.id, obj: this.props.onObjFestival }
             const res = await axios.post('/api/evento/edit', obj, { headers: {"Authorization" : this.props.token}});
             

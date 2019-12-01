@@ -13,7 +13,17 @@ const EventoSchema = new Schema({
   email: String,
   EventDate: Date,
   description: Object,
+  // dados dos usuarios inscritos
   recipients: [recipientSchema],
+  subscription: [{
+    tipo: String,
+    title: String,
+    subtitle: String,
+    descrption: String,
+    image: String,
+    value: Number,
+    responsabilidade: Boolean
+  }],
   active: {
     type: Boolean,
     default: false

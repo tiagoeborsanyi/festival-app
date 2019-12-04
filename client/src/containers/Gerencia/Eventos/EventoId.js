@@ -4,6 +4,7 @@ import * as actions from '../../../store/actions';
 import axios from 'axios';
 
 import ReviewEvento from '../../../components/ViewReviewAddFestival/ViewReviewAddFestival';
+import ViewInscricao from '../../../components/Gerencia/Inscricao/ViewInscricao/ViewInscricao';
 import Modal from '../../../components/UI/Modal/Modal';
 import Spinner from '../../../components/UI/Spinner/Spinner';
 
@@ -13,7 +14,8 @@ class EventoId extends Component {
         load: false,
         publish: false,
         delete: false,
-        errorDelete: false
+        errorDelete: false,
+        controlViewColapse: ''
     }
     async componentDidMount() {
         console.log(this.props.objFestival.name.length)
@@ -56,6 +58,10 @@ class EventoId extends Component {
         this.setState({ delete: false });
     }
 
+    viewColapse = (event) => {
+        this.setState({ controlViewColapse: event.target.name });
+    }
+
     render() {
         let isLoad = <Spinner />;
         if (this.state.load) {
@@ -70,7 +76,15 @@ class EventoId extends Component {
                        editFestival={(e) => this.editFestival(e)}
                        excludeFestival={this.excludeFestival}>
                            <div>
-                               INSCRIÇÔES ESPAÇO
+                               INSCRIÇÔES
+                               <ViewInscricao
+                                    buttonName="basico"
+                                    chave={this.state.controlViewColapse}
+                                    viewColapse={(e, _) => this.viewColapse(e)} />
+                                <ViewInscricao
+                                    buttonName="geral"
+                                    chave={this.state.controlViewColapse}
+                                    viewColapse={(e) => this.viewColapse(e)} />
                            </div>
                        </ReviewEvento>
                 </div>

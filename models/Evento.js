@@ -22,7 +22,15 @@ const EventoSchema = new Schema({
     descrption: String,
     image: String,
     value: Number,
-    responsabilidade: Boolean
+    responsabilidade: Boolean,
+    qtdTotal: {
+      type: Number,
+      default: 0
+    },
+    qtdInscritos: {
+      type: Number,
+      default: 0
+    }
   }],
   active: {
     type: Boolean,

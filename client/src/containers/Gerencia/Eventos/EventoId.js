@@ -33,6 +33,7 @@ class EventoId extends Component {
             id: this.props.match.params.id
         }
         console.log('adiciona inscrição', obj);
+        this.props.history.push(`/gerencia/edit-inscricao/${obj.id}`);
     }
 
     editFestival = (event) => {

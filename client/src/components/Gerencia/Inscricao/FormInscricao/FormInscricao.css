@@ -1,3 +1,27 @@
-.container {
-    text-align: center;
+.forminscricao_container {
+    display: flex;
+    margin: 60px auto;
+}
+
+.forminscricao_col {
+    margin: 10px auto 100px auto;
+}
+
+.forminscricao_title {
+    margin-bottom: 30px;
+    font-weight: bold;
+    font-size: 1.2em;
+    line-height: 1.5;
+}
+
+.forminscricao_item_input {
+    margin-bottom: 25px;
+}
+
+.forminscricao_item_input span {
+    text-align: left;
+    display: block;
+    margin-bottom: 8px;
+    color: #777571;
+    font-weight: bold;
 }

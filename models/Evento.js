@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const recipientSchema = require('./Recipient');
+const inscricaoSchema = require('./Inscricao');
 
 // Create Schema
 const EventoSchema = new Schema({
@@ -15,23 +16,7 @@ const EventoSchema = new Schema({
   description: Object,
   // dados dos usuarios inscritos
   recipients: [recipientSchema],
-  subscription: [{
-    tipo: String,
-    title: String,
-    subtitle: String,
-    descrption: String,
-    image: String,
-    value: Number,
-    responsabilidade: Boolean,
-    qtdTotal: {
-      type: Number,
-      default: 0
-    },
-    qtdInscritos: {
-      type: Number,
-      default: 0
-    }
-  }],
+  subscription: [inscricaoSchema],
   active: {
     type: Boolean,
     default: false

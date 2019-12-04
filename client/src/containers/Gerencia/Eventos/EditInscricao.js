@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+import { connect } from 'react-redux';
 
 import FormInscricao from '../../../components/Gerencia/Inscricao/FormInscricao/FormInscricao';
 
@@ -23,13 +25,14 @@ class EditInscricao extends Component {
         this.setState({ objInscricao: updateObj });
     }
 
-    forminscricaoSubmit = (event) => {
+    forminscricaoSubmit = async (event) => {
         event.preventDefault();
         const obj = {
             id: this.props.match.params.id,
-            objInscricao: this.state.objInscricao
+            obj: this.state.objInscricao
         }
-        console.log(obj)
+        const res = await axios.post('/api/inscricao', obj, { headers: {"Authorization" : this.props.token}});
+        console.log(res);
     }
 
     render() {
@@ -40,4 +43,10 @@ class EditInscricao extends Component {
     }
 }
 
-export default EditInscricao;
+const mapStateToProps = state => {
+    return {
+        token: state.auth.token
+    }
+}
+
+export default connect(mapStateToProps)(EditInscricao);

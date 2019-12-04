@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const mongoose = require('mongoose');
 const passport = require('passport');
 const Mailer = require('../../config/Mailer');
 const answerFestivalTemplate = require('../../config/emailTemplate/answerFestivalTemplate');

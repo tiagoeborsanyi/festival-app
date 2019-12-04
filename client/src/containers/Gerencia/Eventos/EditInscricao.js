@@ -25,7 +25,11 @@ class EditInscricao extends Component {
 
     forminscricaoSubmit = (event) => {
         event.preventDefault();
-        console.log(this.props.match.id, this.state.objInscricao)
+        const obj = {
+            id: this.props.match.params.id,
+            objInscricao: this.state.objInscricao
+        }
+        console.log(obj)
     }
 
     render() {

@@ -18,12 +18,12 @@ class EventoId extends Component {
         controlViewColapse: ''
     }
     async componentDidMount() {
-        console.log(this.props.objFestival.name.length)
+        // console.log(this.props.objFestival.name.length)
         if(this.props.objFestival.name.length) {
             this.setState({ load: true, evt: this.props.objFestival });
         } else {
             const res = await axios.get(`/api/evento/${this.props.match.params.id}`);
-            console.log(res)
+            // console.log(res)
             this.setState({ load: true, evt: res.data });
         }
     }
@@ -32,7 +32,6 @@ class EventoId extends Component {
         const obj = {
             id: this.props.match.params.id
         }
-        console.log('adiciona inscrição', obj);
         this.props.history.push(`/gerencia/edit-inscricao/${obj.id}`);
     }
 
@@ -47,7 +46,7 @@ class EventoId extends Component {
         if (id && this.state.delete) {
             try {
                 const res = await axios.delete(`/api/evento/delete/${id}`, { headers: {"Authorization" : this.props.token}});
-                console.log(res)
+                // console.log(res)
                 res.status === 200 && this.props.history.push('/gerencia/list-events')
             } catch (e) {
                 console.log(e.response);

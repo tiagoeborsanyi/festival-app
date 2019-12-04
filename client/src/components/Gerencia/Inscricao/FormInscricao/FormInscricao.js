@@ -2,7 +2,14 @@ import React from 'react';
 
 import './FormInscricao.css';
 
-const FormInscricao = ({ forminscricaoTitle, forminscricaoSubmit, objInscricao, formInscricaoChanged, children, cancelFormInscricao  }) => {
+const FormInscricao = ({ 
+                            forminscricaoTitle, 
+                            forminscricaoSubmit, 
+                            objInscricao, 
+                            formInscricaoChanged, 
+                            children, 
+                            cancelFormInscricao  
+                        }) => {
     return (
         <div className="row forminscricao_container">
             <div className="col s8 festival_col">
@@ -50,7 +57,12 @@ const FormInscricao = ({ forminscricaoTitle, forminscricaoSubmit, objInscricao, 
                                 <input type="file" />
                             </div>
                             <div className="file-path-wrapper">
-                                <input className="file-path validate" type="text" />
+                                <input 
+                                    className="file-path validate"
+                                    name="image"
+                                    type="text"
+                                    value={objInscricao.image}
+                                    onChange={e => formInscricaoChanged(e)} />
                             </div>
                         </div>
                     </div>
@@ -81,10 +93,10 @@ const FormInscricao = ({ forminscricaoTitle, forminscricaoSubmit, objInscricao, 
                         </div>
                     </div>
                     <div className="forminscricao_item_input">
-                        <span>Data Inicio das inscrições *</span>
+                        <span>Data final das inscrições *</span>
                         <input 
-                            placeholder="Data de inicio da inscrição" 
-                            name="initiateInscricao" 
+                            placeholder="Data final da inscrição" 
+                            name="dateFinal" 
                             type="date" 
                             value={objInscricao.initiateInscricao} 
                             onChange={e => formInscricaoChanged(e)}

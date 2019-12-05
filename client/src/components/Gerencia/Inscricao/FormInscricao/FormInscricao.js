@@ -6,10 +6,17 @@ const FormInscricao = ({
                             forminscricaoTitle, 
                             forminscricaoSubmit, 
                             objInscricao, 
-                            formInscricaoChanged, 
+                            formInscricaoChanged,
+                            selectedImage,
                             children, 
-                            cancelFormInscricao  
+                            cancelFormInscricao,
+                            imgpreview,
+                            imagem
                         }) => {
+    let imgTemp = null;
+    if (imgpreview) {
+        imgTemp = (<img src={imgpreview} alt="festival" />);     
+    }
     return (
         <div className="row forminscricao_container">
             <div className="col s8 festival_col">
@@ -51,10 +58,11 @@ const FormInscricao = ({
                         </div>
                     </div>
                     <div className="forminscricao_item_input">
+                        {imgTemp}
                         <div className="file-field input-field">
                             <div className="btn">
                                 <span>Imagem</span>
-                                <input type="file" />
+                                <input type="file" accept="image/png, image/jpeg" onChange={selectedImage} />
                             </div>
                             <div className="file-path-wrapper">
                                 <input 

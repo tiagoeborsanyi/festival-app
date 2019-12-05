@@ -6,6 +6,10 @@ import FormInscricao from '../../../components/Gerencia/Inscricao/FormInscricao/
 
 class EditInscricao extends Component {
     state = {
+        imagePreviewUrl: '',
+        fileUpload: null,
+        changeImagem: '',
+        selectedfile: '',
         objInscricao: {
             title: '',
             subtitle: '',
@@ -35,11 +39,28 @@ class EditInscricao extends Component {
         console.log(res);
     }
 
+    selecionaImagem = (event) => {
+        event.preventDefault();
+        let reader = new FileReader();
+        let file = event.target.files[0];
+        reader.onloadend = () => {
+            this.setState({
+                selectedfile: file,
+                imagePreviewURL: reader.result
+            })
+        }
+        reader.readAsDataURL(file);
+        this.setState({fileUpload: event.target.files[0]});
+    }
+
     render() {
         return <FormInscricao 
                     objInscricao={this.state.objInscricao}
                     formInscricaoChanged={this.formInscricaoChanged}
-                    forminscricaoSubmit={this.forminscricaoSubmit} />
+                    forminscricaoSubmit={this.forminscricaoSubmit}
+                    selectedImage={(event) => this.selecionaImagem(event)}
+                    imgpreview={this.state.imagePreviewURL}
+                    imagem={this.state.objInscricao.image} />
     }
 }
 

@@ -10,8 +10,7 @@ const FormInscricao = ({
                             selectedImage,
                             children, 
                             cancelFormInscricao,
-                            imgpreview,
-                            imagem
+                            imgpreview
                         }) => {
     let imgTemp = null;
     if (imgpreview) {

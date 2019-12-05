@@ -35,8 +35,14 @@ class EditInscricao extends Component {
             id: this.props.match.params.id,
             obj: this.state.objInscricao
         }
-        const res = await axios.post('/api/inscricao', obj, { headers: {"Authorization" : this.props.token}});
-        console.log(res);
+        // const res = await axios.post('/api/inscricao', obj, { headers: {"Authorization" : this.props.token}});
+        // console.log(res);
+        const { fileUpload } = this.state;
+        if (fileUpload) {
+            this.uploadImagem(fileUpload, fileUpload.name, res => {
+                console.log(res);
+            });
+        }
     }
 
     selecionaImagem = (event) => {
@@ -51,6 +57,20 @@ class EditInscricao extends Component {
         }
         reader.readAsDataURL(file);
         this.setState({fileUpload: event.target.files[0]});
+    }
+
+    uploadImagem = (file, mame, callback) => {
+        const data = new FormData();
+        data.append('file', file, mame);
+        const config = {
+            headers: {
+                'content-type': 'multipart/form-data',
+                'Authorization' : this.props.token
+            }
+        };
+        axios.post('/api/inscricao/upload', data, config)
+            .then(res => callback(res))
+            .catch(err => console.log(err.response));
     }
 
     render() {

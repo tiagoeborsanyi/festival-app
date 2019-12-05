@@ -2,13 +2,16 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const passport = require('passport');
-const http = require('http');
+const fileUpload = require('express-fileupload');
 
 const user = require('./routes/api/user');
 const evento = require('./routes/api/evento');
 const inscricao = require('./routes/api/inscricao');
 
 const app = express();
+
+// File Upload
+app.use(fileUpload());
 
 // Body parser middleware
 app.use(bodyParser.urlencoded({ extended: false }));

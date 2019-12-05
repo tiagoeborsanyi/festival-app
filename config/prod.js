@@ -4,5 +4,8 @@ module.exports = {
     googleClientID: process.env.GOOGLE_CLIENT_ID,
     googleClientSecret: process.env.GOOGLE_CLIENT_SECRET,
     sendGridKey: process.env.SEND_GRID_KEY,
-    redirectDomain: process.env.REDIRECT_DOMAIN
+    redirectDomain: process.env.REDIRECT_DOMAIN,
+    firebase: {
+        
+    }
 }

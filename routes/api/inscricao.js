@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
+const { createWriteStream } = require("fs");
+const { Storage } = require("@google-cloud/storage");
+const keys = require('../../config/keys');
 
 // Load Input Validation
 
@@ -26,5 +29,15 @@ router.post('/', passport.authenticate('jwt', { session: false }), async (req, r
         res.status(400).send(e);
     }
 });
+
+router.post('/upload', passport.authenticate('jwt', { session: false }), (req, res) => {
+    // console.log(req.files);
+    const gc = new Storage({
+        keyFilename: keys.firebase,
+        projectId: 'festival-climb'
+    });
+    const coolFilesBucket = gc.bucket('festival-climb');
+    res.send({ok: 'file ok'})
+})
 
 module.exports = router;

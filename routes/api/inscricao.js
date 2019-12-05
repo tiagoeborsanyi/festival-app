@@ -2,8 +2,12 @@ const express = require('express');
 const router = express.Router();
 const passport = require('passport');
 const Multer = require('multer');
+const functions = require('firebase-functions');
 const { Storage } = require("@google-cloud/storage");
+const path = require('path')
 const keys = require('../../config/keys');
+const admin = require('firebase-admin');
+const serviceAccount = require('../../festival-climb.json');
 
 const multer = Multer({
     storage: Multer.memoryStorage(),
@@ -36,55 +40,33 @@ router.post('/', passport.authenticate('jwt', { session: false }), async (req, r
     }
 });
 
-router.post('/upload', passport.authenticate('jwt', { session: false }), multer.single('file'), (req, res) => {
-    console.log(req.file);
-    
-    let file = req.file
-    if (file) {
-        uploadImageToStorage(file).then((success) => {
-          res.status(200).send({
-            status: 'success'
-          });
-        }).catch((error) => {
-          console.error('ERRO ALGUM: ', error);
-        });
+router.post('/upload', passport.authenticate('jwt', { session: false }), multer.single('file'), (req, res, ) => {
+    admin.initializeApp({
+        credential: admin.credential.cert(serviceAccount),
+        storageBucket: 'festival-climb.appspot.com'
+    });
+    const bucket = admin.storage().bucket();
+    // console.log('file: ', req.file);
+    const opts = {
+        destination: `testefolder/${req.file.originalname}`
     }
-    res.send({ok: 'file ok'})
-});
-
-const uploadImageToStorage = (file) => {
-    const gc = new Storage({
-        keyFilename: keys.firebase,
-        projectId: 'festival-climb'
-    });
-    const bucket = gc.bucket('festival-climb');
-    return new Promise((resolve, reject) => {
-      if (!file) {
-        reject('No image file');
-      }
-      let newFileName = `${file.name}gdfgrretyerhre${Date.now()}`;
-      console.log(newFileName)
-      let fileUpload = bucket.file(newFileName);
-  
-      const blobStream = fileUpload.createWriteStream({
+    let newFileName = `${Date.now()}-${req.file.originalname}`;
+    let fileUpload = bucket.file(newFileName);
+    const blobStream = fileUpload.createWriteStream({
         metadata: {
-          contentType: file.mimetype
+          contentType: req.file.mimetype
         }
-      });
-  
-      blobStream.on('error', (error) => {
-          console.log('STREAAAAAAM ERRRROOOOOOO', error)
-        reject('Something is wrong! Unable to upload at the moment.');
-      });
-  
-      blobStream.on('finish', () => {
-        // The public URL can be used to directly access the file via HTTP.
-        const url = format(`https://storage.googleapis.com/${bucket.name}/${fileUpload.name}`);
-        resolve(url);
-      });
-  
-      blobStream.end(file.buffer);
     });
-}
+    blobStream.on('error', (error) => {
+        console.log('STREAAAAAAM ERRRROOOOOOO', error)
+    });
+    blobStream.on('finish', () => {
+      // The public URL can be used to directly access the file via HTTP.
+      const url = `https://storage.googleapis.com/${bucket.name}/${fileUpload.name}`;
+      console.log(url)
+      res.status(200).send({ok: 'file ok', url: url})
+    });
+    blobStream.end(req.file.buffer);
+});
 
 module.exports = router;

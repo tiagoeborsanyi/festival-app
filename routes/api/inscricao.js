@@ -37,9 +37,9 @@ router.post('/', passport.authenticate('jwt', { session: false }), async (req, r
 });
 
 router.post('/upload', passport.authenticate('jwt', { session: false }), multer.single('file'), (req, res) => {
-    console.log(req.files.file);
+    console.log(req.file);
     
-    let file = req.files.file
+    let file = req.file
     if (file) {
         uploadImageToStorage(file).then((success) => {
           res.status(200).send({

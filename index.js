@@ -11,7 +11,7 @@ const inscricao = require('./routes/api/inscricao');
 const app = express();
 
 // File Upload
-app.use(fileUpload());
+// app.use(fileUpload());
 
 // Body parser middleware
 app.use(bodyParser.urlencoded({ extended: false }));

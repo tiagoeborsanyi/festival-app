@@ -1,6 +1,7 @@
 import React from 'react';
 
 import './FormInscricao.css';
+import Spinner from '../../../UI/Spinner/Spinner';
 
 const FormInscricao = ({ 
                             forminscricaoTitle, 
@@ -10,11 +11,15 @@ const FormInscricao = ({
                             selectedImage,
                             children, 
                             cancelFormInscricao,
-                            imgpreview
+                            imgpreview,
+                            loadImage
                         }) => {
     let imgTemp = null;
-    if (imgpreview) {
-        imgTemp = (<img src={imgpreview} alt="festival" />);     
+    if (imgpreview && loadImage) {
+        imgTemp = <Spinner />     
+    }
+    if (imgpreview && !loadImage) {
+        imgTemp = (<img src={imgpreview} alt="festival" />);
     }
     return (
         <div className="row forminscricao_container">

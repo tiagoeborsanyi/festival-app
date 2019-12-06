@@ -7,7 +7,11 @@ const { Storage } = require("@google-cloud/storage");
 const path = require('path')
 const keys = require('../../config/keys');
 const admin = require('firebase-admin');
-const serviceAccount = require('../../festival-climb.json');
+const serviceAccount = require('../../config/keys');
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount.firebase),
+  storageBucket: 'festival-climb.appspot.com'
+});
 
 const multer = Multer({
     storage: Multer.memoryStorage(),
@@ -41,16 +45,9 @@ router.post('/', passport.authenticate('jwt', { session: false }), async (req, r
 });
 
 router.post('/upload', passport.authenticate('jwt', { session: false }), multer.single('file'), (req, res, ) => {
-    admin.initializeApp({
-        credential: admin.credential.cert(serviceAccount),
-        storageBucket: 'festival-climb.appspot.com'
-    });
     const bucket = admin.storage().bucket();
-    // console.log('file: ', req.file);
-    const opts = {
-        destination: `testefolder/${req.file.originalname}`
-    }
-    let newFileName = `${Date.now()}-${req.file.originalname}`;
+    // console.log('bucket: ', bucket);
+    let newFileName = `${Date.now()}_${req.file.originalname}`;
     let fileUpload = bucket.file(newFileName);
     const blobStream = fileUpload.createWriteStream({
         metadata: {
@@ -62,7 +59,7 @@ router.post('/upload', passport.authenticate('jwt', { session: false }), multer.
     });
     blobStream.on('finish', () => {
       // The public URL can be used to directly access the file via HTTP.
-      const url = `https://storage.googleapis.com/${bucket.name}/${fileUpload.name}`;
+      const url = `https://firebasestorage.googleapis.com/v0/b/${bucket.name}/o/${fileUpload.name}`;
       console.log(url)
       res.status(200).send({ok: 'file ok', url: url})
     });

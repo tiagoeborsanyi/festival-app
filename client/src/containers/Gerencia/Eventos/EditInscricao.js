@@ -10,6 +10,7 @@ class EditInscricao extends Component {
         fileUpload: null,
         changeImagem: '',
         selectedfile: '',
+        loadImage: false,
         objInscricao: {
             title: '',
             subtitle: '',
@@ -35,14 +36,9 @@ class EditInscricao extends Component {
             id: this.props.match.params.id,
             obj: this.state.objInscricao
         }
-        // const res = await axios.post('/api/inscricao', obj, { headers: {"Authorization" : this.props.token}});
-        // console.log(res);
-        const { fileUpload } = this.state;
-        if (fileUpload) {
-            this.uploadImagem(fileUpload, fileUpload.name, res => {
-                console.log(res);
-            });
-        }
+        console.log('objInscricao Submit: ', obj);
+        const res = await axios.post('/api/inscricao', obj, { headers: {"Authorization" : this.props.token}});
+        console.log(res);
     }
 
     selecionaImagem = (event) => {
@@ -56,7 +52,17 @@ class EditInscricao extends Component {
             })
         }
         reader.readAsDataURL(file);
-        this.setState({fileUpload: event.target.files[0]});
+        this.setState({fileUpload: event.target.files[0], loadImage: true});
+        if (file) {
+            this.uploadImagem(file, file.name, res => {
+                console.log(res);
+                if (res.status === 200) {
+                    const updateObj = { ...this.state.objInscricao };
+                    updateObj['image'] = `${res.data.url}?alt=media`
+                    this.setState({loadImage: false, objInscricao: updateObj});
+                }
+            });
+        }
     }
 
     uploadImagem = (file, mame, callback) => {
@@ -80,7 +86,8 @@ class EditInscricao extends Component {
                     forminscricaoSubmit={this.forminscricaoSubmit}
                     selectedImage={(event) => this.selecionaImagem(event)}
                     imgpreview={this.state.imagePreviewURL}
-                    imagem={this.state.objInscricao.image} />
+                    imagem={this.state.objInscricao.image}
+                    loadImage={this.state.loadImage} />
     }
 }
 

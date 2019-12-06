@@ -2,10 +2,6 @@ const express = require('express');
 const router = express.Router();
 const passport = require('passport');
 const Multer = require('multer');
-const functions = require('firebase-functions');
-const { Storage } = require("@google-cloud/storage");
-const path = require('path')
-const keys = require('../../config/keys');
 const admin = require('firebase-admin');
 const serviceAccount = require('../../config/keys');
 admin.initializeApp({
@@ -46,7 +42,6 @@ router.post('/', passport.authenticate('jwt', { session: false }), async (req, r
 
 router.post('/upload', passport.authenticate('jwt', { session: false }), multer.single('file'), (req, res, ) => {
     const bucket = admin.storage().bucket();
-    // console.log('bucket: ', bucket);
     let newFileName = `${Date.now()}_${req.file.originalname}`;
     let fileUpload = bucket.file(newFileName);
     const blobStream = fileUpload.createWriteStream({
@@ -55,7 +50,8 @@ router.post('/upload', passport.authenticate('jwt', { session: false }), multer.
         }
     });
     blobStream.on('error', (error) => {
-        console.log('STREAAAAAAM ERRRROOOOOOO', error)
+        console.log('error', error)
+        res.status(400).send({error});
     });
     blobStream.on('finish', () => {
       // The public URL can be used to directly access the file via HTTP.

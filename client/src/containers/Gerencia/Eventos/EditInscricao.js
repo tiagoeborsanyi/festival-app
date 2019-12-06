@@ -79,6 +79,11 @@ class EditInscricao extends Component {
             .catch(err => console.log(err.response));
     }
 
+    cancelFormInscricao = (e) => {
+        e.preventDefault();
+        this.props.history.go(-1);
+    }
+
     render() {
         return <FormInscricao 
                     objInscricao={this.state.objInscricao}
@@ -87,7 +92,8 @@ class EditInscricao extends Component {
                     selectedImage={(event) => this.selecionaImagem(event)}
                     imgpreview={this.state.imagePreviewURL}
                     imagem={this.state.objInscricao.image}
-                    loadImage={this.state.loadImage} />
+                    loadImage={this.state.loadImage}
+                    cancelFormInscricao={this.cancelFormInscricao} />
     }
 }
 

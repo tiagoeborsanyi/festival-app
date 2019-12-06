@@ -18,7 +18,8 @@ class EditInscricao extends Component {
             image: '',
             value: '',
             qtdTotal: 0,
-            dateFinal: ''
+            dateFinal: '',
+            descrption: ''
         }
     }
 

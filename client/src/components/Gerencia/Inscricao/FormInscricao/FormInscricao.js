@@ -110,13 +110,25 @@ const FormInscricao = ({
                             placeholder="Data final da inscrição" 
                             name="dateFinal" 
                             type="date" 
-                            value={objInscricao.initiateInscricao} 
+                            value={objInscricao.dateFinal} 
                             onChange={e => formInscricaoChanged(e)}
                             required />
                     </div>
                     <div className="forminscricao_item_input">
                         <span>Descrição *</span>
-                        {children}
+                        <div className="row">
+                            <div className="row">
+                                <div className="input-field col s12">
+                                <textarea 
+                                    className="materialize-textarea"
+                                    style={{height: '120px'}}
+                                    placeholder="Escriva uma descrição breve para esta modalidade de inscrição"
+                                    name="descrption"
+                                    value={objInscricao.descrption}
+                                    onChange={e => formInscricaoChanged(e)} />
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <button className="red darken-1 btn-flat left white-text" onClick={cancelFormInscricao}>
                         Cancelar

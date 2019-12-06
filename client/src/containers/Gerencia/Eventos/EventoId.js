@@ -23,7 +23,7 @@ class EventoId extends Component {
             this.setState({ load: true, evt: this.props.objFestival });
         } else {
             const res = await axios.get(`/api/evento/${this.props.match.params.id}`);
-            // console.log(res)
+            console.log(res)
             this.setState({ load: true, evt: res.data });
         }
     }
@@ -64,7 +64,19 @@ class EventoId extends Component {
 
     render() {
         let isLoad = <Spinner />;
+        let evtInsc = (<p>Não há inscrições cadastradas para esse evento.</p>);
         if (this.state.load) {
+            if(this.state.evt.subscription.length) {
+                evtInsc = this.state.evt.subscription.map(insc => (
+                            <ViewInscricao
+                                    key={insc._id}
+                                    buttonName="basico"
+                                    chave={this.state.controlViewColapse}
+                                    viewColapse={(e, _) => this.viewColapse(e)}
+                                    objInscricao={insc} />
+                ))
+            }
+            console.log(evtInsc)
             isLoad = (
                 <div>
                     <ReviewEvento
@@ -77,14 +89,7 @@ class EventoId extends Component {
                        excludeFestival={this.excludeFestival}>
                            <div>
                                INSCRIÇÔES
-                               <ViewInscricao
-                                    buttonName="basico"
-                                    chave={this.state.controlViewColapse}
-                                    viewColapse={(e, _) => this.viewColapse(e)} />
-                                <ViewInscricao
-                                    buttonName="geral"
-                                    chave={this.state.controlViewColapse}
-                                    viewColapse={(e) => this.viewColapse(e)} />
+                               {evtInsc}
                            </div>
                        </ReviewEvento>
                 </div>

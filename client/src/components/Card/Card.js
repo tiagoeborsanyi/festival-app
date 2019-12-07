@@ -18,7 +18,7 @@ const Card = ({ descUrl, obj }) => (
                 <span className="month">Out</span>
                 </time>
                 <div className="titulo_evento">
-                <h2 className="entry_title">{obj.name}</h2>
+                <h2 className="entry_title">{obj.name.substring(0, 20)}</h2>
                 </div>
                 <div className="clearfix">
                 </div>

@@ -17,15 +17,15 @@ const Descricao = ({evento, inscrever}) => {
                     <h4 className="desc_title">{evento.name}</h4>
                     <div className="desc_subtitle">
                             <i className="small material-icons desc_icon">flag</i>
-                            <span>INSTITUTO ALOUATTA</span>
+                            <span>{evento.nameCompany.toUpperCase()}</span>
                     </div>
                     <div className="desc_subtitle">
                             <i className="small material-icons desc_icon">perm_contact_calendar</i>
-                            <span>{evento.date.split('T')[0].split('-').reverse().join('-')}</span>
+                            <span>{evento.EventDate.split('T')[0].split('-').reverse().join('-')}</span>
                     </div>
                     <div className="desc_subtitle">
                             <i className="small material-icons desc_icon">location_on</i>
-                            <span>Barragem do Rio São Bento - {evento.city}, {evento.state} Brasil</span>
+                            <span>PEDREIRA DO DIB - {evento.city}, {evento.state} Brasil</span>
                     </div>
                     <div className="desc_info_title">
                         Informações Gerais
@@ -49,7 +49,7 @@ const Descricao = ({evento, inscrever}) => {
                             ORGANIZADOR
                         </span>
                         <span>
-                            INSTITUTO ALOUATTA
+                            {evento.nameCompany.toUpperCase()}
                         </span>
                         <span>
                             CNPJ: 10.574.595/0001-42

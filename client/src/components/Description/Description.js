@@ -7,6 +7,10 @@ import './Description.css';
 //https://ticketagora.com.br/e/festival-da-montanha-2019-28813
 
 const Descricao = ({evento, inscrever}) => {
+    let buttonDisabled = '';
+    if (new Date() > new Date(evento.subscription[0].dateFinal)) {
+        buttonDisabled = 'disabled';
+    }
     return (
         <div>
             <div className="row">
@@ -42,7 +46,7 @@ const Descricao = ({evento, inscrever}) => {
                         Inscrições até {evento.subscription[0].dateFinal.split('T')[0].split('-').reverse().join('/')} 18:00
                     </div>
                     <div className="desc_inscricao_button">
-                    <Link to="/" className="waves-effect waves-light btn-large red lighten-1 disabled">{inscrever}</Link>
+                    <Link to="/" className={"waves-effect waves-light btn-large red lighten-1 "+buttonDisabled}>{inscrever}</Link>
                     </div>
                     <div className="desc_organizacao">
                         <span className="desc_organizacao_title">

@@ -14,6 +14,7 @@ const ViewInscricao = (props) => {
             </button>
             <div className="viewincricao_content" style={{display: (props.buttonName === props.chave) ? 'block' : 'none'}}>
                 <h6>{props.objInscricao.subtitle}</h6>
+                <img src={props.objInscricao.image} alt="Interruptor de luz" className="viewincricao_image" />
                 <blockquote>
                     {props.objInscricao.descrption}
                 </blockquote>

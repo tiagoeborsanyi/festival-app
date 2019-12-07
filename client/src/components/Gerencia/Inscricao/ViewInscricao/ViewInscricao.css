@@ -27,3 +27,8 @@
     overflow: hidden;
     background-color: #f1f1f1;
   }
+
+  .viewincricao_image {
+    width: 200px;
+    height: 160px;
+  }

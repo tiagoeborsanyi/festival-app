@@ -9,7 +9,7 @@ import MenuGerencia from './containers/Gerencia/MenuGerencia';
 import Auth from './containers/Auth/Auth';
 import Logout from './containers/Auth/Logout/Logout';
 import Dashboard from './containers/Dashboard/Dashboard';
-import Description from './components/Description/Description';
+import Description from './containers/Descricao/Descricao';
 import NewFestival from './containers/Festival/EditFestival/NewFestival';
 import Footer from './components/Footer/Footer';
 

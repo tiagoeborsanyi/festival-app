@@ -18,9 +18,7 @@ class Dashboard extends Component {
                 temp.push(x)
             }
         });
-        console.log(temp)
         this.setState({ eventos: temp });
-        // console.log(res.data)
     }
 
 

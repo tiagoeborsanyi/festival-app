@@ -70,13 +70,12 @@ class EventoId extends Component {
                 evtInsc = this.state.evt.subscription.map(insc => (
                             <ViewInscricao
                                     key={insc._id}
-                                    buttonName="basico"
+                                    buttonName={insc.tipo}
                                     chave={this.state.controlViewColapse}
                                     viewColapse={(e, _) => this.viewColapse(e)}
                                     objInscricao={insc} />
                 ))
             }
-            console.log(evtInsc)
             isLoad = (
                 <div>
                     <ReviewEvento

@@ -9,7 +9,7 @@ const Footer = () => (
             <p>PARTICIPANTES</p>
             <ul>
                 <li><Link to="/login">Login</Link></li>
-                <li>Cadastre-se</li>
+                <li><Link to="/register">Cadastre-se</Link></li>
                 <li>Central de ajuda</li>
                 <li>Termos de compra</li>
                 <li>Política de cancelamento</li>

@@ -1,0 +1,27 @@
+.register_container {
+    display: flex;
+    margin: 60px auto;
+}
+
+.register_col {
+    margin: 10px auto 100px auto;
+}
+
+.register_title {
+    margin-bottom: 30px;
+    font-weight: bold;
+    font-size: 1.2em;
+    line-height: 1.5;
+}
+
+.register_item_input {
+    margin-bottom: 25px;
+}
+
+.register_item_input span {
+    text-align: left;
+    display: block;
+    margin-bottom: 8px;
+    color: #777571;
+    font-weight: bold;
+}

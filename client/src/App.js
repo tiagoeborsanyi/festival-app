@@ -7,6 +7,7 @@ import './App.css';
 import Toolbar from './components/Navigation/Toolbar';
 import MenuGerencia from './containers/Gerencia/MenuGerencia';
 import Auth from './containers/Auth/Auth';
+import AuthRegister from './containers/Auth/AuthRegister';
 import Logout from './containers/Auth/Logout/Logout';
 import Dashboard from './containers/Dashboard/Dashboard';
 import Description from './containers/Descricao/Descricao';
@@ -26,6 +27,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={Dashboard} />
             <Route path="/login" component={Auth} />
+            <Route path="/register" component={AuthRegister} />
             <Route path="/descricao/:id" component={Description} />
             <Route path="/add_festival" component={NewFestival} />
             <Route path="/edit_festival/:eventId" component={NewFestival} />

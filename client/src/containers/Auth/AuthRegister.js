@@ -1,27 +1,42 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 import Register from '../../components/User/Register/Register';
 
 class AuthRegister extends Component {
     state = {
-        name: '',
-        email: '',
-        password: '',
-        password2: ''
+        objRegister: {
+            name: '',
+            email: '',
+            password: '',
+            password2: ''
+        },
+        errorMessage: null
     }
 
     changed = (e) => {
-        console.log(e.target.name)
         const { name, value } = e.target;
-        this.setState({ [name]: value });
+        const updateObjRegister = { ...this.state.objRegister };
+        updateObjRegister[name] = value;
+        this.setState({ objRegister: updateObjRegister });
     }
 
-    submit = e => {
+    submit = async e => {
         e.preventDefault();
+        const obj = this.state.objRegister;
+        try {
+            const res = await axios.post('/api/users/register', obj);
+            if (res.status === 200) {
+                this.props.history.push('/login');
+            }
+        } catch (error) {
+            console.log(error.response);
+            this.setState({ errorMessage: error.response.data });
+        }
     }
 
     render() {
-        return <Register changed={this.changed} submit={this.submit} />
+        return <Register changed={this.changed} submit={this.submit} error={this.state.errorMessage} />
     }
 }
 

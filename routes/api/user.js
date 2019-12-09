@@ -21,6 +21,7 @@ router.get('/test', (req, res) => res.send({ msg: 'Users Works' }));
 // @desc Register user
 // @access Public
 router.post('/register', async (req, res) => {
+    console.log(req.body)
     const { errors, isValid } = validateResgisterInput(req.body);
     const { name, email, password } = req.body;
 

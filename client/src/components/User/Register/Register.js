@@ -2,7 +2,7 @@ import React from 'react';
 
 import './Register.css';
 
-const Register = ({ submit, changed }) => {
+const Register = ({ submit, changed, error }) => {
     return (
         <div className="row register_container">
                 <div className="col s6 register_col">
@@ -15,6 +15,7 @@ const Register = ({ submit, changed }) => {
                         <div className="register_item_input">
                             <span>Email</span>
                             <input placeholder="email" name="email" type="email" onChange={e => changed(e)} />
+                            <span className="helper-text" data-error="wrong" data-success="right">{error ? error.email : null}</span>
                         </div>
                         <div className="register_item_input">
                             <span>Senha</span>
@@ -23,6 +24,7 @@ const Register = ({ submit, changed }) => {
                         <div className="register_item_input">
                             <span>Repita sua senha</span>
                             <input placeholder="Repita sua senha" name="password2" type="password" onChange={e => changed(e)} />
+                            <span className="helper-text" data-error="wrong" data-success="right">{error ? error.password2 : null}</span>
                         </div>
                         <button type="submit" className="light-blue btn-flat right white-text">
                             Cadastrar

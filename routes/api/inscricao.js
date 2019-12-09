@@ -2,12 +2,7 @@ const express = require('express');
 const router = express.Router();
 const passport = require('passport');
 const Multer = require('multer');
-const admin = require('firebase-admin');
-const serviceAccount = require('../../config/keys');
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount.firebase),
-  storageBucket: 'festival-climb.appspot.com'
-});
+const admin = require('../../config/firebaseAdmin');
 
 const multer = Multer({
     storage: Multer.memoryStorage(),

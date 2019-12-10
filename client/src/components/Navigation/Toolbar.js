@@ -5,11 +5,16 @@ import { connect } from 'react-redux';
 import './Toolbar.css';
 
 const Toolbar = (props) => {
+  const boo = (typeof props.isAdmin === 'boolean') && props.isAdmin;
   let auth = null
+  let admin = null
   if (props.authToken) {
     auth = <li><Link to="/logout">Logout</Link></li>
   } else {
     auth = <li><Link to="/login">Login</Link></li>
+  }
+  if (boo) {
+    admin = <li><Link to="/gerencia">Gerenciar</Link></li>
   }
   return (
     <header className="mainHeader">
@@ -22,7 +27,7 @@ const Toolbar = (props) => {
               </Link>
             </div>
             <ul className="right hide-on-med-and-down">
-              { props.isAdmin && <li><Link to="/gerencia">Gerenciar</Link></li> }
+              { admin }
               <li><Link to="/add_festival"><span>Crie um evento</span></Link></li>
               {auth}
             </ul>

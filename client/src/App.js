@@ -22,6 +22,7 @@ class App extends Component {
   }
 
   render() {
+    let boo = (typeof this.props.isAdmin === 'boolean') && this.props.isAdmin;
     let routes = (
       <div className="App">
           <Switch>
@@ -41,7 +42,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={Dashboard} />
             <Route path="/logout" component={Logout} />
-            <Route path="/gerencia" component={MenuGerencia} />
+            { boo && <Route path="/gerencia" component={MenuGerencia} /> }
             <Route path="/descricao/:id" component={Description} />
             <Route path="/add_festival" component={NewFestival} />
             <Route path="/edit_festival/:eventId" component={NewFestival} />
@@ -62,7 +63,8 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-      isAuthenticated: state.auth.token !== null
+      isAuthenticated: state.auth.token !== null,
+      isAdmin: state.auth.admin
   }
 }
 

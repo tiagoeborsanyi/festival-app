@@ -9,7 +9,14 @@ const Toolbar = (props) => {
   let auth = null
   let admin = null
   if (props.authToken) {
-    auth = <li><Link to="/logout">Logout</Link></li>
+    auth = <li className="mainNav__item list1">
+            <span>USUARIO</span>
+            <ul className="sublist__color">
+              <li>Perfil</li>
+              <li>Minhas Inscrições</li>
+              <li><Link to="/logout">Sair</Link></li>
+            </ul>
+          </li>
   } else {
     auth = <li><Link to="/login">Login</Link></li>
   }

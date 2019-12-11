@@ -5,3 +5,55 @@
     vertical-align: middle;
     border: 0;
 }
+
+.mainNav__item {
+    margin: 0 6px;
+    vertical-align: middle;
+    position: relative;
+    font-size: 1em;
+    margin-right: 10px;
+}
+
+.list1 ul {
+    position: absolute;
+    list-style: none;
+    display: none;
+    padding: 0;
+    width: 78px;
+    line-height: 1;
+    text-align: center;
+}
+
+.list1 ul li {
+    margin: 13px 1px;
+    text-align: center;
+}
+
+.list1 ul li a {
+color: white;
+}
+
+.sublist__color {
+ background-color: #1565c0;
+}
+
+.subList__color li {
+    text-align: center;
+}
+
+.list1:hover ul {
+    display: block;
+}
+
+.mainNav__item a,
+.mainNav__item span {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.mainNav__item a:hover,
+.mainNav__item span:hover {
+  color: #ccc;
+  cursor: pointer;
+}

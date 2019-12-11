@@ -19,13 +19,14 @@
     list-style: none;
     display: none;
     padding: 0;
-    width: 78px;
+    width: 98px;
     line-height: 1;
     text-align: center;
+    left: -20px;
 }
 
 .list1 ul li {
-    margin: 13px 1px;
+    margin: 8px 1px;
     text-align: center;
 }
 
@@ -43,6 +44,7 @@ color: white;
 
 .list1:hover ul {
     display: block;
+    z-index: 100;
 }
 
 .mainNav__item a,

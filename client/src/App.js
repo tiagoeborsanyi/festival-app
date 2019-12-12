@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
+import axios from 'axios';
 import * as actions from './store/actions/index';
 
 import './App.css';
@@ -18,20 +19,12 @@ import Footer from './components/Footer/Footer';
 
 class App extends Component {
 
-  state = {
-    isAdmin: false
-  }
-
   componentDidMount () {
-    this.props.onTryOutSignup();
-    // console.log(this.props.onTryOutSignup())
-    const admin = localStorage.getItem('admin');
-    this.setState({ isAdmin: admin });
+      this.props.onTryOutSignup()
   }
 
   render() {
     let boo = localStorage.getItem('admin') === 'true' ? true : false;
-    console.log('boo: ', boo, this.state.isAdmin)
     let routes = (
       <div className="App">
           <Switch>

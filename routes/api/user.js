@@ -87,7 +87,8 @@ router.post('/login', async (req, res) => {
                 token: 'Bearer ' + token,
                 expiresIn: 3600,
                 localId: user.id,
-                admin: user.admin
+                admin: user.admin,
+                name: user.name
             });
         });
     } else {

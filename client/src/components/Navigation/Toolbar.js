@@ -10,7 +10,7 @@ const Toolbar = (props) => {
   let admin = null
   if (props.authToken) {
     auth = <li className="mainNav__item list1">
-            <span>USUARIO</span>
+            <span>{localStorage.getItem('name')}</span>
             <ul className="sublist__color">
               <li><Link to="/perfil">Perfil</Link></li>
               <li><Link to="/minhas_inscricoes">Minhas Inscrições</Link></li>

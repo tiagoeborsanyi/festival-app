@@ -28,6 +28,7 @@ export const logout = () => {
     localStorage.removeItem('expirationDate');
     localStorage.removeItem('userId');
     localStorage.removeItem('admin');
+    localStorage.removeItem('name');
     return {
         type: actionTypes.AUTH_LOGOUT
     }
@@ -53,6 +54,7 @@ export const auth = (email, pass) => async dispatch => {
             localStorage.setItem('expirationDate', expirationDate);
             localStorage.setItem('userId', localId);
             localStorage.setItem('admin', response.data.admin);
+            localStorage.setItem('name', response.data.name);
             dispatch(authSuccess(token, localId, admin));
             dispatch(checkAuthTimeout(expiresIn));
         }

@@ -30,8 +30,6 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={Dashboard} />
             <Route path="/login" component={Auth} />
-            <Route path="/perfil/:id" component={AuthPerfil} />
-            <Route path="/minhas-inscricoes" component={MinhasInscricoes} />
             <Route path="/register" component={AuthRegister} />
             <Route path="/descricao/:id" component={Description} />
             <Route path="/add_festival" component={NewFestival} />
@@ -45,6 +43,8 @@ class App extends Component {
         <div className="App">
           <Switch>
             <Route exact path="/" component={Dashboard} />
+            <Route path="/perfil" component={AuthPerfil} />
+            <Route path="/minhas_inscricoes" component={MinhasInscricoes} />
             <Route path="/logout" component={Logout} />
             { boo && <Route path="/gerencia" component={MenuGerencia} /> }
             <Route path="/descricao/:id" component={Description} />

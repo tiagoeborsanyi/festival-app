@@ -12,8 +12,8 @@ const Toolbar = (props) => {
     auth = <li className="mainNav__item list1">
             <span>USUARIO</span>
             <ul className="sublist__color">
-              <li><Link to="/">Perfil</Link></li>
-              <li><Link to="/">Minhas Inscrições</Link></li>
+              <li><Link to="/perfil">Perfil</Link></li>
+              <li><Link to="/minhas_inscricoes">Minhas Inscrições</Link></li>
               <li><Link to="/logout">Sair</Link></li>
             </ul>
           </li>

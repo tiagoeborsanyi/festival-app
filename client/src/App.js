@@ -7,6 +7,8 @@ import './App.css';
 import Toolbar from './components/Navigation/Toolbar';
 import MenuGerencia from './containers/Gerencia/MenuGerencia';
 import Auth from './containers/Auth/Auth';
+import AuthPerfil from './containers/Auth/AuthPerfil';
+import MinhasInscricoes from './containers/MinhasInscricoes/MinhasInscricoes';
 import AuthRegister from './containers/Auth/AuthRegister';
 import Logout from './containers/Auth/Logout/Logout';
 import Dashboard from './containers/Dashboard/Dashboard';
@@ -28,6 +30,8 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={Dashboard} />
             <Route path="/login" component={Auth} />
+            <Route path="/perfil/:id" component={AuthPerfil} />
+            <Route path="/minhas-inscricoes" component={MinhasInscricoes} />
             <Route path="/register" component={AuthRegister} />
             <Route path="/descricao/:id" component={Description} />
             <Route path="/add_festival" component={NewFestival} />

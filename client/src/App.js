@@ -18,13 +18,20 @@ import Footer from './components/Footer/Footer';
 
 class App extends Component {
 
+  state = {
+    isAdmin: false
+  }
+
   componentDidMount () {
     this.props.onTryOutSignup();
     // console.log(this.props.onTryOutSignup())
+    const admin = localStorage.getItem('admin');
+    this.setState({ isAdmin: admin });
   }
 
   render() {
-    let boo = (typeof this.props.isAdmin === 'boolean') && this.props.isAdmin;
+    let boo = localStorage.getItem('admin') === 'true' ? true : false;
+    console.log('boo: ', boo, this.state.isAdmin)
     let routes = (
       <div className="App">
           <Switch>
@@ -67,8 +74,7 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-      isAuthenticated: state.auth.token !== null,
-      isAdmin: state.auth.admin
+      isAuthenticated: state.auth.token !== null
   }
 }
 

@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import './Toolbar.css';
 
 const Toolbar = (props) => {
-  const boo = (typeof props.isAdmin === 'boolean') && props.isAdmin;
+  const boo = localStorage.getItem('admin') === 'true' ? true : false;
   let auth = null
   let admin = null
   if (props.authToken) {

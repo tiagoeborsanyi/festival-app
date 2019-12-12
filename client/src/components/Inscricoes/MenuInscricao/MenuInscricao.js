@@ -4,15 +4,13 @@ import { Link } from 'react-router-dom';
 const MenuInscricao = (props) => {
     return (
         <div>
-            <nav>
-                <div style={{textAlign: 'left', background: '#1e88e5', paddingLeft: '20px'}}>
+            <div style={{textAlign: 'left', background: '#1e88e5', paddingLeft: '15px', paddingTop: '6px'}}>
                 <div className="col s12">
-                    <a className="breadcrumb">First</a>
-                    <a className="breadcrumb">Second</a>
-                    <a className="breadcrumb">Third</a>
+                    <span className="breadcrumb" style={{color: '#fff'}}>First</span>
+                    <span className="breadcrumb" style={{color: '#ccc'}}>Second</span>
+                    <span className="breadcrumb" style={{color: '#ccc'}}>Third</span>
                 </div>
-                </div>
-            </nav>
+            </div>
             {props.children}
         </div>
     )

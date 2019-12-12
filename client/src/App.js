@@ -32,6 +32,7 @@ class App extends Component {
             <Route path="/login" component={Auth} />
             <Route path="/register" component={AuthRegister} />
             <Route path="/descricao/:id" component={Description} />
+            <Route path="/inscricao/:id" component={MenuInscricaoFestival} />
             <Route path="/add_festival" component={NewFestival} />
             <Route path="/edit_festival/:eventId" component={NewFestival} />
             <Redirect to="/" />

@@ -5,6 +5,7 @@ class SelectCategory extends Component {
         return(
             <div>
                 Selecione a categoria
+                <button className="btn btn-flat" onClick={this.props.categoriaContinuar}>Continuar</button>
             </div>
         )
     }

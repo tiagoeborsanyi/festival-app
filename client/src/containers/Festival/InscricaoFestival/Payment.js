@@ -5,6 +5,7 @@ class Payment extends Component {
         return(
             <div>
                 Pagamento
+                <button className="btn btn-flat" onClick={this.props.pagamentoContinua}>Pagamento</button>
             </div>
         )
     }

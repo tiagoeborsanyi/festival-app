@@ -1,14 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const MenuInscricao = ({first, second, third, cor, children}) => {
+const MenuInscricao = ({
+                            categoria, 
+                            identificacao, 
+                            pagamento, 
+                            conclusao, 
+                            cor, 
+                            children
+                        }) => {
     return (
         <div>
             <div style={{textAlign: 'left', background: '#1e88e5', paddingLeft: '15px', paddingTop: '6px'}}>
                 <div className="col s12">
-                    <span className="breadcrumb" style={{color: first ? first : cor }}>First</span>
-                    <span className="breadcrumb" style={{color: second ? second : cor }}>Second</span>
-                    <span className="breadcrumb" style={{color: third ? third : cor }}>Third</span>
+                    <span className="breadcrumb" style={{color: categoria ? categoria : cor }}>Selecione a categoria</span>
+                    <span className="breadcrumb" style={{color: identificacao ? identificacao : cor }}>Identificação</span>
+                    <span className="breadcrumb" style={{color: pagamento ? pagamento : cor }}>Pagamento</span>
+                    <span className="breadcrumb" style={{color: conclusao ? conclusao : cor }}>Conclusão</span>
                 </div>
             </div>
             {children}

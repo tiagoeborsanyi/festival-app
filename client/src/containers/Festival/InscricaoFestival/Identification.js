@@ -5,6 +5,7 @@ class Identification extends Component {
         return(
             <div>
                 Identificação
+                <button onClick={this.props.identificacaoContinuar}>continuar</button>
             </div>
         )
     }

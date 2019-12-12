@@ -5,6 +5,7 @@ class Conclusion extends Component {
         return(
             <div>
                 Conclusão
+                Compra efetuada com sucesso.
             </div>
         )
     }

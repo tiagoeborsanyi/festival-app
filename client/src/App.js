@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import axios from 'axios';
 import * as actions from './store/actions/index';
 
 import './App.css';
@@ -14,6 +13,7 @@ import AuthRegister from './containers/Auth/AuthRegister';
 import Logout from './containers/Auth/Logout/Logout';
 import Dashboard from './containers/Dashboard/Dashboard';
 import Description from './containers/Descricao/Descricao';
+import MenuInscricaoFestival from './containers/Festival/InscricaoFestival/MenuInscricaoFestival';
 import NewFestival from './containers/Festival/EditFestival/NewFestival';
 import Footer from './components/Footer/Footer';
 
@@ -48,6 +48,7 @@ class App extends Component {
             <Route path="/logout" component={Logout} />
             { boo && <Route path="/gerencia" component={MenuGerencia} /> }
             <Route path="/descricao/:id" component={Description} />
+            <Route path="/inscricao/:id" component={MenuInscricaoFestival} />
             <Route path="/add_festival" component={NewFestival} />
             <Route path="/edit_festival/:eventId" component={NewFestival} />
             <Redirect to="/" />

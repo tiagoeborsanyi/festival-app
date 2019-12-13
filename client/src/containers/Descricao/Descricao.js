@@ -10,6 +10,7 @@ class Descricao extends Component {
     }
 
     async componentDidMount() {
+        // aqui vou mandar a requisição para a store e depois pegar o objeto retorna da store
         const obj = await axios.get(`/api/evento/${this.props.match.params.id}`);
         console.log(obj)
         this.setState({evento: obj.data});

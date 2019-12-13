@@ -4,6 +4,15 @@ import * as actionTypes from './actionTypes';
 export const inscricaoStart = () => {
     return {
         type: actionTypes.INSCRICAO_START,
-        obj: {}
+        objFestival: {}
+    }
+}
+
+export const festivalLoad = (id) => async dispatch => {
+    try {
+        const response = await axios.get(`/api/evento/${id}`);
+        dispatch({ type: actionTypes.FESTIVAL_LOAD, objFestival: response.data });
+    } catch (error) {
+        dispatch({ type: actionTypes.FESTIVAL_LOAD, status: erro.response });
     }
 }

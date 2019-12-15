@@ -14,6 +14,8 @@ class MenuInscricaoFestival extends Component {
             identificacao: false,
             pagamento: false,
             conclusao: false,
+            objInsc: null,
+            idInscricaoUser: null
     }
 
     componentDidMount() {
@@ -29,12 +31,22 @@ class MenuInscricaoFestival extends Component {
 
     funcCategoria = (e) => {
         e.preventDefault();
+        const escolha = this.props.objInscricao.inscricoes.filter(obj => obj._id === e.target.name);
+        this.setState({ objInsc: escolha });
         this.setState({categoria: false, identificacao: true})
     }
 
     funcIdentificacao = (e) => {
         e.preventDefault();
-        this.setState({ identificacao: false, pagamento: true})
+        // Aqui eu vejo se o usuario esta authenticado ou nao
+        // se estiver: então é mostrados os dados de e a inscrição escolhida para depois ir para o pagamento
+        // se não estiver: então é mandado para fazer login
+        if (this.props.isAuth) {
+            console.log(this.state.objInsc)
+            this.setState({ identificacao: false, pagamento: true})
+        } else {
+            console.log('voce não esta logado, é necessário fazer login')
+        }
     }
 
     funcPagamento = (e) => {
@@ -73,7 +85,8 @@ class MenuInscricaoFestival extends Component {
 
 const mapStateToProps = state => {
     return {
-        objInscricao: state.inscricao.objInscricao
+        objInscricao: state.inscricao.objInscricao,
+        isAuth: state.auth.token !== null
     }
 }
 

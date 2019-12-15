@@ -24,7 +24,7 @@ const ViewInscricao = (props) => {
                     <span>Concordo com o <a href="#">termo de responsabilidade</a></span>
                     <div className="row">
                         <p>Valor: R$ {props.objInscricao.value} + 2,00 taxas</p>
-                        <button className="waves-effect waves-light btn-small">Continuar</button>
+                        <button className="waves-effect waves-light btn-small"  name={props.objInscricao._id} onClick={props.continuar}>Continuar</button>
                     </div>
                 </label>
                 </div>

@@ -9,14 +9,13 @@ class SelectCategory extends Component {
         let spinner = <Spinner />
         if (this.props.obj) {
             const insc = this.props.obj.inscricoes.map(obj => (
-                <ViewInscricao key={obj._id} objInscricao={obj} />
+                <ViewInscricao key={obj._id} objInscricao={obj} continuar={this.props.categoriaContinuar} />
             ))
             spinner = insc
         }
         return(
             <div>
                 {spinner}
-                <button className="btn btn-flat" onClick={this.props.categoriaContinuar}>Continuar</button>
             </div>
         )
     }

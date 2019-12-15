@@ -9,12 +9,14 @@ import thunk from 'redux-thunk';
 import App from './App';
 import authReducer from './store/reducers/authReducer';
 import festivalReducer from './store/reducers/festivalReducer';
+import inscricaoReducer from './store/reducers/inscricaoReducer';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const rootReducer = combineReducers({
     auth: authReducer,
-    festival: festivalReducer
+    festival: festivalReducer,
+    inscricao: inscricaoReducer
 });
 
 const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)));

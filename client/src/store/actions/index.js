@@ -11,3 +11,9 @@ export {
     festivalSubmit,
     festivalFinish
 } from './festival';
+
+export {
+    inscricaoStart,
+    festivalLoad,
+    festivalUnmount
+} from './inscricao';

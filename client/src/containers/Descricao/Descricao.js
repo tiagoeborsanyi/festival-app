@@ -1,25 +1,27 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { connect } from 'react-redux';
+import * as actions from '../../store/actions';
 
 import Description from '../../components/Description/Description';
 import Spinner from '../../components/UI/Spinner/Spinner';
 
 class Descricao extends Component {
-    state = {
-        evento: null
-    }
-
     async componentDidMount() {
         // aqui vou mandar a requisição para a store e depois pegar o objeto retorna da store
-        const obj = await axios.get(`/api/evento/${this.props.match.params.id}`);
-        console.log(obj)
-        this.setState({evento: obj.data});
+        if (this.props.obj === null) {
+            this.props.onFestivalLoad(this.props.match.params.id);
+        }
+    }
+
+    componentWillUnmount() {
+        this.props.onFestivalUnmount();
     }
 
     render() {
         let spinner = <Spinner />
-        if (this.state.evento) {
-            spinner = <Description evento={this.state.evento} />
+        if (this.props.obj) {
+            spinner = <Description evento={this.props.obj} />
         }
         return (
             <div>
@@ -29,4 +31,17 @@ class Descricao extends Component {
     }
 }
 
-export default Descricao;
+const mapStateToProps = state => {
+    return {
+        obj: state.inscricao.objFestival
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+      onFestivalLoad: (id) => dispatch(actions.festivalLoad(id)),
+      onFestivalUnmount: () => dispatch(actions.festivalUnmount())
+    }
+  }
+
+export default connect(mapStateToProps, mapDispatchToProps)(Descricao);

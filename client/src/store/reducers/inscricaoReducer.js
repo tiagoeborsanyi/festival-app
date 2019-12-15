@@ -7,8 +7,13 @@ const initialState = {
 }
 
 const festivalLoad = (state, action) => {
+    const updateInscricao = {
+        idFestival: action.objFestival._id,
+        inscricoes: action.objFestival.subscription
+    }
     return updateObject(state, {
-        objFestival: action.objFestival
+        objFestival: action.objFestival,
+        objInscricao: updateInscricao
     })
 }
 

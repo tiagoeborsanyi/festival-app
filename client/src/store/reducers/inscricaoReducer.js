@@ -34,6 +34,7 @@ const inscricaoUnmount = (state, action) => {
 const reducer = (state = initialState, action) => {
     switch(action.type) {
         case actionTypes.FESTIVAL_UNMOUNT: return festivalUnmount(state, action);
+        case actionTypes.INSCRICAO_UNMOUNT: return inscricaoUnmount(state, action);
         case actionTypes.FESTIVAL_LOAD: return festivalLoad(state, action);
         default: return state;
     }

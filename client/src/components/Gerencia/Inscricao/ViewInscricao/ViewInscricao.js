@@ -14,13 +14,13 @@ const ViewInscricao = (props) => {
             </button>
             <div className="viewincricao_content" style={{display: (props.buttonName === props.chave) ? 'block' : 'none'}}>
                 <h6>{props.objInscricao.subtitle}</h6>
-                <img src={props.objInscricao.image} alt="Interruptor de luz" className="viewincricao_image" />
+                <img src={props.objInscricao.image} alt="Escalado de pedra" className="viewincricao_image" />
                 <blockquote>
                     {props.objInscricao.descrption}
                 </blockquote>
                 <div>
                 <label>
-                    <input type="checkbox" className="filled-in" />
+                    <input type="checkbox" className="filled-in" name={props.objInscricao._id} value={props.objInscricao.responsabilidade} onClick={props.changeCheckbox}  />
                     <span>Concordo com o <a href="#">termo de responsabilidade</a></span>
                     <div className="row">
                         <p>Valor: R$ {props.objInscricao.value} + 2,00 taxas</p>

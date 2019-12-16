@@ -15,7 +15,9 @@ class MenuInscricaoFestival extends Component {
             pagamento: false,
             conclusao: false,
             objInsc: null,
-            idInscricaoUser: null
+            idInscricaoUser: null,
+            userPayment: null,
+            checked: false
     }
 
     componentDidMount() {
@@ -25,28 +27,32 @@ class MenuInscricaoFestival extends Component {
     }
 
     componentWillUnmount() {
-        console.log('menuinscricao willUnmount')
+        // console.log('menuinscricao willUnmount')
         // tenho que colocar um obj finish aqui para objFestival e objInscricao
+        this.props.onInscricaoUnmount();
+    }
+
+    changeCheckbox = (e) => {
+        console.log(e.target)
     }
 
     funcCategoria = (e) => {
+        // Aqui eu vejo se o usuario esta authenticado ou nao
+        // se estiver: então é mostrados os dados de e a inscrição escolhida para depois ir para o pagamento
+        // se não estiver: então é mandado para fazer login
         e.preventDefault();
-        const escolha = this.props.objInscricao.inscricoes.filter(obj => obj._id === e.target.name);
-        this.setState({ objInsc: escolha });
-        this.setState({categoria: false, identificacao: true})
+        if (this.props.isAuth) {
+            const escolha = this.props.objInscricao.inscricoes.filter(obj => obj._id === e.target.name);
+            this.setState({objInsc: escolha, categoria: false, identificacao: true});
+        } else {
+            this.props.history.push('/login');
+        }
     }
 
     funcIdentificacao = (e) => {
         e.preventDefault();
-        // Aqui eu vejo se o usuario esta authenticado ou nao
-        // se estiver: então é mostrados os dados de e a inscrição escolhida para depois ir para o pagamento
-        // se não estiver: então é mandado para fazer login
-        if (this.props.isAuth) {
             console.log(this.state.objInsc)
             this.setState({ identificacao: false, pagamento: true})
-        } else {
-            console.log('voce não esta logado, é necessário fazer login')
-        }
     }
 
     funcPagamento = (e) => {
@@ -56,7 +62,7 @@ class MenuInscricaoFestival extends Component {
 
     renderContent() {
         if (this.state.categoria) {
-            return <SelectCategory categoriaContinuar={this.funcCategoria} obj={this.props.objInscricao} />
+            return <SelectCategory categoriaContinuar={this.funcCategoria} obj={this.props.objInscricao} changeCheckbox={this.changeCheckbox} />
         }
         if (this.state.identificacao) {
             return <Identification identificacaoContinuar={this.funcIdentificacao} />
@@ -92,7 +98,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-      onFestivalLoad: (id) => dispatch(actions.festivalLoad(id))
+      onFestivalLoad: (id) => dispatch(actions.festivalLoad(id)),
+      onInscricaoUnmount: () => dispatch(actions.inscricaoUnmount())
     }
   }
 

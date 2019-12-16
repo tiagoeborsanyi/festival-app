@@ -3,8 +3,7 @@ import * as actionTypes from './actionTypes';
 
 export const inscricaoStart = () => {
     return {
-        type: actionTypes.INSCRICAO_START,
-        objFestival: {}
+        type: actionTypes.INSCRICAO_START
     }
 }
 

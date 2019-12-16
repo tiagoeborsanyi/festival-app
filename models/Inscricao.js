@@ -8,7 +8,10 @@ const inscricaoSchema = new Schema({
     descrption: String,
     image: String,
     value: Number,
-    responsabilidade: Boolean,
+    responsabilidade: {
+      type: Boolean,
+      default: false
+    },
     qtdTotal: {
       type: Number,
       default: 0

@@ -22,3 +22,9 @@ export const festivalUnmount = () => {
         type: actionTypes.FESTIVAL_UNMOUNT
     };
 };
+
+export const inscricaoUnmount = () => {
+    return {
+        type: actionTypes.INSCRICAO_UNMOUNT
+    }
+}

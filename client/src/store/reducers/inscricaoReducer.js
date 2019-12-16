@@ -23,6 +23,14 @@ const festivalUnmount = (state, action) => {
     })
 }
 
+const inscricaoUnmount = (state, action) => {
+    return updateObject(state, {
+        objInscricao: null
+    })
+}
+
+
+
 const reducer = (state = initialState, action) => {
     switch(action.type) {
         case actionTypes.FESTIVAL_UNMOUNT: return festivalUnmount(state, action);

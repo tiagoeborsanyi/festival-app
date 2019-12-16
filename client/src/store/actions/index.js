@@ -15,5 +15,6 @@ export {
 export {
     inscricaoStart,
     festivalLoad,
-    festivalUnmount
+    festivalUnmount,
+    inscricaoUnmount
 } from './inscricao';

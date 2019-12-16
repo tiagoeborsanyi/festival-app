@@ -17,7 +17,7 @@ class MenuInscricaoFestival extends Component {
             objInsc: null,
             idInscricaoUser: null,
             userPayment: null,
-            checked: false
+            checkedId: null
     }
 
     componentDidMount() {
@@ -34,6 +34,7 @@ class MenuInscricaoFestival extends Component {
 
     changeCheckbox = (e) => {
         console.log(e.target)
+        this.setState({checkedId: e.target.name})
     }
 
     funcCategoria = (e) => {
@@ -42,8 +43,14 @@ class MenuInscricaoFestival extends Component {
         // se não estiver: então é mandado para fazer login
         e.preventDefault();
         if (this.props.isAuth) {
-            const escolha = this.props.objInscricao.inscricoes.filter(obj => obj._id === e.target.name);
-            this.setState({objInsc: escolha, categoria: false, identificacao: true});
+            const isCheckd = this.props.objInscricao.inscricoes.filter(obj => obj._id === this.state.checkedId && obj._id === e.target.name);
+            console.log(isCheckd);
+            if (isCheckd.length > 0) {
+                console.log('dentro checkd')
+                const escolha = this.props.objInscricao.inscricoes.filter(obj => obj._id === e.target.name);
+                this.setState({objInsc: escolha, categoria: false, identificacao: true});
+            }
+            console.log('Termo de responsabilidade deve ser aceito.');
         } else {
             this.props.history.push('/login');
         }

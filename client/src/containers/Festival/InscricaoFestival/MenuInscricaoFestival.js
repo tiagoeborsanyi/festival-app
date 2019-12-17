@@ -7,6 +7,7 @@ import SelectCategory from './SelectCategory';
 import Identification from './Identification';
 import Payment from './Payment';
 import Conclusion from './Conclusion';
+import Modal from '../../../components/UI/Modal/Modal';
 
 class MenuInscricaoFestival extends Component {
     state = {
@@ -33,8 +34,11 @@ class MenuInscricaoFestival extends Component {
     }
 
     changeCheckbox = (e) => {
-        console.log(e.target)
-        this.setState({checkedId: e.target.name})
+        if (e.target.checked) {
+            this.setState({checkedId: e.target.name})
+        } else {
+            this.setState({checkedId: null})
+        }
     }
 
     funcCategoria = (e) => {
@@ -44,13 +48,13 @@ class MenuInscricaoFestival extends Component {
         e.preventDefault();
         if (this.props.isAuth) {
             const isCheckd = this.props.objInscricao.inscricoes.filter(obj => obj._id === this.state.checkedId && obj._id === e.target.name);
-            console.log(isCheckd);
+            console.log(isCheckd)
             if (isCheckd.length > 0) {
-                console.log('dentro checkd')
                 const escolha = this.props.objInscricao.inscricoes.filter(obj => obj._id === e.target.name);
                 this.setState({objInsc: escolha, categoria: false, identificacao: true});
+            } else {
+                console.log('Termo de responsabilidade deve ser aceito.');
             }
-            console.log('Termo de responsabilidade deve ser aceito.');
         } else {
             this.props.history.push('/login');
         }
@@ -75,7 +79,7 @@ class MenuInscricaoFestival extends Component {
             return <Identification identificacaoContinuar={this.funcIdentificacao} />
         }
         if (this.state.pagamento) {
-            return <Payment pagamentoContinua={this.funcPagamento} />
+            return <Payment pagamentoContinua={this.funcPagamento} obj={this.state.objInsc} />
         }
         if (this.state.conclusao) {
             return <Conclusion />

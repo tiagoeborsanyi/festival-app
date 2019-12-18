@@ -2,6 +2,8 @@ import React from 'react';
 
 import './ViewInscricao.css';
 
+import formatMoney from '../../../../containers/utils/currencyMoney';
+
 const ViewInscricao = (props) => {
     return (
         <div className="viewincricao_container">
@@ -23,7 +25,7 @@ const ViewInscricao = (props) => {
                     <input type="checkbox" className="filled-in" name={props.objInscricao._id} value={props.objInscricao.responsabilidade} onClick={props.changeCheckbox}  />
                     <span>Concordo com o <a href="#">termo de responsabilidade</a></span>
                     <div className="row">
-                        <p>Valor: R$ {props.objInscricao.value} + 2,00 taxas</p>
+                        <p>Valor: {formatMoney(props.objInscricao.value)} + 2,00 taxas</p>
                         <button className="waves-effect waves-light btn-small"  name={props.objInscricao._id} onClick={props.continuar}>Continuar</button>
                     </div>
                 </label>

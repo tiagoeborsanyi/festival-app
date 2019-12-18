@@ -15,6 +15,16 @@ import Dashboard from './containers/Dashboard/Dashboard';
 import Description from './containers/Descricao/Descricao';
 import MenuInscricaoFestival from './containers/Festival/InscricaoFestival/MenuInscricaoFestival';
 import NewFestival from './containers/Festival/EditFestival/NewFestival';
+
+import Help from './components/Help/Help';
+import TermosCompra from './components/TermosCompra/TermosCompra';
+import PoliticaCancelamento from './components/PoliticaCancelamento/PoliticaCancelamento';
+import SobrePlataforma from './components/SobrePlataforma/SobrePlataforma';
+import Suporte from './components/Suporte/Suporte';
+import QuemSomos from './components/QuemSomos/QuemSomos';
+import TrabalheConosco from './components/TrabalheConosco/TrabalheConosco';
+import PoliticaPrivacidade from './components/PoliticaPrivacidade/PoliticaPrivacidade';
+
 import Footer from './components/Footer/Footer';
 
 class App extends Component {
@@ -35,6 +45,14 @@ class App extends Component {
             <Route path="/inscricao/:id" component={MenuInscricaoFestival} />
             <Route path="/add_festival" component={NewFestival} />
             <Route path="/edit_festival/:eventId" component={NewFestival} />
+            <Route path="/ajuda" component={Help} />
+            <Route path="/termos_compra" component={TermosCompra} />
+            <Route path="/politica_cancelamento" component={PoliticaCancelamento} />
+            <Route path="/sobre_plataforma" component={SobrePlataforma} />
+            <Route path="/suporte" component={Suporte} />
+            <Route path="/quem_somos" component={QuemSomos} />
+            <Route path="/trabalhe_conosco" component={TrabalheConosco} />
+            <Route path="/politica_privacidade" component={PoliticaPrivacidade} />
             <Redirect to="/" />
           </Switch>
         </div>
@@ -52,6 +70,14 @@ class App extends Component {
             <Route path="/inscricao/:id" component={MenuInscricaoFestival} />
             <Route path="/add_festival" component={NewFestival} />
             <Route path="/edit_festival/:eventId" component={NewFestival} />
+            <Route path="/ajuda" component={Help} />
+            <Route path="/termos_compra" component={TermosCompra} />
+            <Route path="/politica_cancelamento" component={PoliticaCancelamento} />
+            <Route path="/sobre_plataforma" component={SobrePlataforma} />
+            <Route path="/suporte" component={Suporte} />
+            <Route path="/quem_somos" component={QuemSomos} />
+            <Route path="/trabalhe_conosco" component={TrabalheConosco} />
+            <Route path="/politica_privacidade" component={PoliticaPrivacidade} />
             <Redirect to="/" />
           </Switch>
         </div>

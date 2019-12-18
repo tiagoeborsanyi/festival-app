@@ -24,7 +24,7 @@ const Toolbar = (props) => {
     admin = <li><Link to="/gerencia">Gerenciar</Link></li>
   }
   return (
-    <header className="mainHeader">
+    <header className="mainHeader" style={{textAlign: 'left'}}>
         {/* <DrawerToggle clicked={props.drawerToggleClicked} /> */}
         <nav className="blue darken-3">
           <div className="nav-wrapper">

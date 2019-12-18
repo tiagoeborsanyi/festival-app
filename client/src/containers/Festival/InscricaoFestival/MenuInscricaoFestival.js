@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../../store/actions';
+import axios from 'axios';
 
 import MenuInscricao from '../../../components/Inscricoes/MenuInscricao/MenuInscricao';
 import SelectCategory from './SelectCategory';
@@ -16,20 +17,26 @@ class MenuInscricaoFestival extends Component {
             pagamento: false,
             conclusao: false,
             objInsc: null,
+            objUser: null,
             idInscricaoUser: null,
             userPayment: null,
             checkedId: null,
             isCheckModal: false
     }
 
-    componentDidMount() {
+    async componentDidMount() {
+        if (localStorage.getItem('token') !== null) {
+            const res = await axios.get('/api/users/current', { headers: {"Authorization" : localStorage.getItem('token')}});
+            console.log(res.data)
+            this.setState({objUser: res.data});
+        }
         if (this.props.objInscricao === null) {
             this.props.onFestivalLoad(this.props.match.params.id);
         }
     }
 
     componentWillUnmount() {
-        // console.log('menuinscricao willUnmount')
+        console.log('menuinscricao willUnmount')
         // tenho que colocar um obj finish aqui para objFestival e objInscricao
         this.props.onInscricaoUnmount();
     }
@@ -42,19 +49,18 @@ class MenuInscricaoFestival extends Component {
         }
     }
 
-    funcCategoria = (e) => {
+    funcCategoria = async (e) => {
         // Aqui eu vejo se o usuario esta authenticado ou nao
         // se estiver: então é mostrados os dados de e a inscrição escolhida para depois ir para o pagamento
         // se não estiver: então é mandado para fazer login
         e.preventDefault();
         if (this.props.isAuth) {
             const isCheckd = this.props.objInscricao.inscricoes.filter(obj => obj._id === this.state.checkedId && obj._id === e.target.name);
-            console.log(isCheckd)
+            // console.log(isCheckd)
             if (isCheckd.length > 0) {
                 const escolha = this.props.objInscricao.inscricoes.filter(obj => obj._id === e.target.name);
                 this.setState({objInsc: escolha, categoria: false, identificacao: true});
             } else {
-                console.log('Termo de responsabilidade deve ser aceito.');
                 this.setState({isCheckModal: true});
             }
         } else {
@@ -78,10 +84,10 @@ class MenuInscricaoFestival extends Component {
             return <SelectCategory categoriaContinuar={this.funcCategoria} obj={this.props.objInscricao} changeCheckbox={this.changeCheckbox} />
         }
         if (this.state.identificacao) {
-            return <Identification identificacaoContinuar={this.funcIdentificacao} />
+            return <Identification identificacaoContinuar={this.funcIdentificacao} objUser={this.state.objUser} />
         }
         if (this.state.pagamento) {
-            return <Payment pagamentoContinua={this.funcPagamento} obj={this.state.objInsc} />
+            return <Payment pagamentoContinua={this.funcPagamento} obj={this.state.objInsc} objUser={this.state.objUser} />
         }
         if (this.state.conclusao) {
             return <Conclusion />

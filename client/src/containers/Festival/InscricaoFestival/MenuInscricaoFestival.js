@@ -74,8 +74,8 @@ class MenuInscricaoFestival extends Component {
             this.setState({ identificacao: false, pagamento: true})
     }
 
-    funcPagamento = (e) => {
-        e.preventDefault();
+    funcPagamento = () => {
+        console.log('stripe amount: ', this.state.objUser, this.state.objInsc);
         // tenho que fazer esse setState depois que o pagamento for aprovado
         // this.setState({ pagamento: false, conclusao: true})
     }

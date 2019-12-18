@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
+import StripeCheckout from 'react-stripe-checkout';
 
 class Payment extends Component {
+    billing = () => {
+
+    }
     render() {
         return(
                 <div>
@@ -13,7 +17,15 @@ class Payment extends Component {
                 <p>Titulo: {this.props.obj[0].title}</p>
                 <img src={this.props.obj[0].image} alt="Escalado de pedra" className="viewincricao_image" />
                 <p>Valor a pagar R$: {this.props.obj[0].value}</p>
-                <button className="waves-effect waves-light btn-small" onClick={this.props.pagamentoContinua}>Pagar</button>
+                <StripeCheckout
+                name="Festival Climb BID"
+                description={"Valor que será pago R$ "+this.props.obj[0].value}
+                amount={this.props.obj[0].value}
+                token={/*aqui a função que vai ser enviada para a api*/this.billing}
+                stripeKey={process.env.REACT_APP_STRIPE_KEY}
+                >
+                    <button className="waves-effect waves-light btn-small" onClick={this.props.pagamentoContinua}>Pagar</button>
+                </StripeCheckout>
             </div>
         )
     }

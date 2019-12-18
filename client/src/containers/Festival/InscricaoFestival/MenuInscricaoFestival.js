@@ -76,7 +76,8 @@ class MenuInscricaoFestival extends Component {
 
     funcPagamento = (e) => {
         e.preventDefault();
-        this.setState({ pagamento: false, conclusao: true})
+        // tenho que fazer esse setState depois que o pagamento for aprovado
+        // this.setState({ pagamento: false, conclusao: true})
     }
 
     renderContent() {

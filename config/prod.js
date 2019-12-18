@@ -5,6 +5,8 @@ module.exports = {
     googleClientSecret: process.env.GOOGLE_CLIENT_SECRET,
     sendGridKey: process.env.SEND_GRID_KEY,
     redirectDomain: process.env.REDIRECT_DOMAIN,
+    stripePublishableKey: process.env.STRIPE_PUBLISHABLE_KEY,
+    stripeSecretKey: process.env.STRIPE_SECRET_KEY,
     firebase: {
         type: process.env.TYPE,
         project_id: process.env.PROJECT_ID,

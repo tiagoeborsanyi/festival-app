@@ -18,7 +18,8 @@ class MenuInscricaoFestival extends Component {
             objInsc: null,
             idInscricaoUser: null,
             userPayment: null,
-            checkedId: null
+            checkedId: null,
+            isCheckModal: false
     }
 
     componentDidMount() {
@@ -54,6 +55,7 @@ class MenuInscricaoFestival extends Component {
                 this.setState({objInsc: escolha, categoria: false, identificacao: true});
             } else {
                 console.log('Termo de responsabilidade deve ser aceito.');
+                this.setState({isCheckModal: true});
             }
         } else {
             this.props.history.push('/login');
@@ -86,16 +88,26 @@ class MenuInscricaoFestival extends Component {
         }
     }
 
+    clickModal = () => {
+        this.setState({isCheckModal: false});
+    }
+
     render() {
         const { categoria, identificacao, pagamento, conclusao } = this.state;
         return(
-            <MenuInscricao 
-                categoria={categoria ? "#fff" : "#ccc"}
-                identificacao={identificacao ? "#fff" : "#ccc"}
-                pagamento={pagamento ? "#fff" : "#ccc"}
-                conclusao={conclusao ? "#fff" : "#ccc"}>
-                {this.renderContent()}
-            </MenuInscricao>
+            <div>
+                <Modal show={this.state.isCheckModal}>
+                    <p>Termo de responsabilidade para esta modalidade deve ser aceito.</p>
+                    <button className="btn" onClick={this.clickModal}>OK</button>
+                </Modal>
+                <MenuInscricao 
+                    categoria={categoria ? "#fff" : "#ccc"}
+                    identificacao={identificacao ? "#fff" : "#ccc"}
+                    pagamento={pagamento ? "#fff" : "#ccc"}
+                    conclusao={conclusao ? "#fff" : "#ccc"}>
+                    {this.renderContent()}
+                </MenuInscricao>
+            </div>
         )
     }
 }

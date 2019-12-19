@@ -1,7 +1,16 @@
 import React, { Component } from 'react';
 import StripeCheckout from 'react-stripe-checkout';
+import axios from 'axios';
 
 class Payment extends Component {
+    pagStripe = async (token) => {
+        const obj = {
+            id: token,
+            value: this.props.obj[0].value
+        }
+        const res = await axios.post('/api/inscricao/stripe', obj);
+        console.log('resposta token: ', token, res);
+    }
     render() {
         return(
                 <div>
@@ -18,8 +27,8 @@ class Payment extends Component {
                 name="Festival Climb BID"
                 description={"Valor que será pago R$ "+this.props.obj[0].value}
                 amount={this.props.obj[0].value}
-                token={/*aqui a função que vai ser enviada para a api*/this.props.pagamentoContinua}
-                stripeKey={process.env.REACT_APP_STRIPE_KEY}
+                token={token => this.pagStripe(token)}
+                stripeKey='ID_TOKEN STRIPE'
                 >
                     <button className="waves-effect waves-light btn-small">Pagar</button>
                 </StripeCheckout>

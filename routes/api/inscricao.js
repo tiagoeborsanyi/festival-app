@@ -62,15 +62,15 @@ router.post('/upload', passport.authenticate('jwt', { session: false }), multer.
 // @route POST /api/inscricao/stripe
 // @desc Inscricao billing
 // @access Private
-router.post('/stripe', passport.authenticate('jwt', { session: false }), async (req, res) => {
+router.post('/stripe', async (req, res) => {
+    console.log(req.body.id)
     const { value, id } = req.body;
     const charge = await stripe.charges.create({
-        amount: value*100,
+        amount: value,
         currency: 'usd',
-        description: `Valor de RS ${value} pago. Obrigado.`,
-        source: id
+        description: `Valor de RS 00 pago. Obrigado.`,
+        source: id.id
     });
-
     // Aqui tenho que criar uma função para somar o numero total de inscritos
 
     // um função para fazer update e salvar no banco de dados e nas coleções corretas

@@ -5,8 +5,10 @@ import './MyInscricoes.css';
 const MyInscricoes = (props) => {
     return (
         <div>
-            MyInscricoes DE USUARIO
-            <h1>TESTE DE MyInscricoes</h1>
+            <h3>Minhas inscrições</h3>
+            <ul>
+                <li>Nome: </li>
+            </ul>
         </div>
     )
 }

@@ -28,7 +28,7 @@ class Payment extends Component {
                 description={"Valor que será pago R$ "+this.props.obj[0].value}
                 amount={this.props.obj[0].value}
                 token={token => this.pagStripe(token)}
-                stripeKey='ID_TOKEN STRIPE'
+                stripeKey={process.env.REACT_APP_STRIPE_KEY}
                 >
                     <button className="waves-effect waves-light btn-small">Pagar</button>
                 </StripeCheckout>

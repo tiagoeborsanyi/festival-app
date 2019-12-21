@@ -12,7 +12,6 @@ class AuthPerfil extends Component {
 
     async componentDidMount () {
         const res = await axios.get('/api/users/current', { headers: {"Authorization" : this.props.token}});
-        console.log(res)
         const { name, email } = res.data;
         this.setState({ name, email });
     }

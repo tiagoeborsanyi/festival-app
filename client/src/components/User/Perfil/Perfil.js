@@ -5,8 +5,9 @@ import './Perfil.css';
 const Perfil = (props) => {
     return (
         <div>
-            PERFIL DE USUARIO
-            <h1>TESTE DE PERFIL</h1>
+            <h3>PERFIL DE USUARIO</h3>
+            <p><b>Nome:</b> {props.name}</p>
+            <p><b>Email:</b> {props.email}</p>
         </div>
     )
 }

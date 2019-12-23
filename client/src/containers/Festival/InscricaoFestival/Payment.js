@@ -9,7 +9,8 @@ class Payment extends Component {
             value: this.props.obj[0].value,
             name: this.props.objUser.name,
             email: this.props.objUser.email,
-            idSubscription: this.props.obj[0]._id
+            idSubscription: this.props.obj[0]._id,
+            idFestival: this.props.idFestival
         }
         const res = await axios.post('/api/inscricao/stripe', obj);
         console.log('resposta token: ', token, res);

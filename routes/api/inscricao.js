@@ -64,7 +64,7 @@ router.post('/upload', passport.authenticate('jwt', { session: false }), multer.
 // @access Private
 router.post('/stripe', async (req, res) => {
     console.log(req.body)
-    const { value, id, name, email } = req.body;
+    const { value, id, name, email, idSubscription, idFestival } = req.body;
     const charge = await stripe.charges.create({
         amount: value,
         currency: 'usd',
@@ -74,9 +74,21 @@ router.post('/stripe', async (req, res) => {
     // Aqui tenho que criar uma função para somar o numero total de inscritos
 
     // um função para fazer update e salvar no banco de dados e nas coleções corretas
+    try {
+        const response = await Evento.updateOne({ _id: idFestival }, { $push: { recipients: {name, email} } }).exec();
+    } catch (error) {
+        
+    }
 
     // res.send falando que ta tudo certo e retornar uma resposta com status ok
     res.status(200).send({ok: 'ok'});
 });
+
+router.post('/my_subscriptions', async (req, res) => {
+    const { email } = req.body;
+    const response = await Evento.find({ recipients: {$elemMatch: {email: email}}});
+    // console.log(response);
+    res.status(200).send(response);
+})
 
 module.exports = router;

@@ -88,7 +88,11 @@ class MenuInscricaoFestival extends Component {
             return <Identification identificacaoContinuar={this.funcIdentificacao} objUser={this.state.objUser} />
         }
         if (this.state.pagamento) {
-            return <Payment pagamentoContinua={this.funcPagamento} obj={this.state.objInsc} objUser={this.state.objUser} />
+            return <Payment 
+                pagamentoContinua={this.funcPagamento} 
+                obj={this.state.objInsc} 
+                objUser={this.state.objUser}
+                idFestival={this.props.match.params.id} />
         }
         if (this.state.conclusao) {
             return <Conclusion />

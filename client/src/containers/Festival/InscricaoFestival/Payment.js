@@ -6,7 +6,10 @@ class Payment extends Component {
     pagStripe = async (token) => {
         const obj = {
             id: token,
-            value: this.props.obj[0].value
+            value: this.props.obj[0].value,
+            name: this.props.objUser.name,
+            email: this.props.objUser.email,
+            idSubscription: this.props.obj[0]._id
         }
         const res = await axios.post('/api/inscricao/stripe', obj);
         console.log('resposta token: ', token, res);

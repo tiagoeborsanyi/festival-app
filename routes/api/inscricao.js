@@ -64,7 +64,7 @@ router.post('/upload', passport.authenticate('jwt', { session: false }), multer.
 // @access Private
 router.post('/stripe', async (req, res) => {
     console.log(req.body)
-    const { value, id } = req.body;
+    const { value, id, name, email } = req.body;
     const charge = await stripe.charges.create({
         amount: value,
         currency: 'usd',
